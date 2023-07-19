@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :users
    
 
+  # devise_for :welcomes , :controllers => {registrations: 'registrations'} do
   devise_for :welcomes , :controllers => {registrations: 'registrations'} do
     get 'devise/sessions#destroy'
   end

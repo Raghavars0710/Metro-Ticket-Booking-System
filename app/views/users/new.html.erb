@@ -1,2 +1,11 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<p id="notice"><%= notice %></p>
+
+<h3>Create a User</h3>
+<%= form_with model: @user do |user| %>
+  <%= user.text_field :name, placeholder: "Name" %>
+  <%= user.text_field :contact_number, placeholder: "Contact Number" %>
+  <%= user.text_field :address, placeholder: "address" %>
+  <%= user.text_field :type, placeholder: "Role" %>
+  <%= user.text_field :role_description, placeholder: "Description" %>
+  <%= user.submit %>
+<% end %>
