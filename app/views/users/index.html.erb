@@ -1,31 +1,40 @@
-<p><%= button_to( "Log Out", destroy_welcome_session_path, method: :delete ) %></p> <p id="notice"><%= notice %></p>
+<p><%= button_to( "Log Out", destroy_welcome_session_path, method: :delete ) %> <br><%= link_to 'Add Member', new_user_path %>  </p>
+ <p id="notice"><%= notice %></p>
 
-<h1>All users</h1>
+<h1>All Members of <%= current_welcome.username%></h1>
  
 <table border="2", color ="white">
   <thead>
     <tr>
       <th>Name</th>
-      <th>Contact Number</th>
+      <th>Email</th>
+      <th>Phone Number</th>
       <th>Address</th>
-      <th>User Role</th>
-      <th>Role Details</th>
       <th colspan="3">Operations</th>
       <!-- <th ></th> -->
     </tr>
   </thead>
 
   <tbody>
+    <tr>
+        <td><%= current_welcome.username %></td>
+        <td><%= current_welcome.email %></td>
+        <td><%=  %></td>
+        <td><%=  %></td>
+        <td><%=  %></td>
+        <td><%=  %></td>
+        <td><%=  %></td>
+
+    </tr>
     <% @users.each do |user| %>
       <tr>
         <td><%= user.name %></td>
+        <td><%= user.email %></td>
         <td><%= user.contact_number %></td>
         <td><%= user.address %></td>
-        <td><%= user.type %></td>
-        <td><%= user.role_description %></td>
         <td><%= link_to 'Show', user_path(user) %></td>
         <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= button_to( "Destroy", user_path(user), method: :delete) %></td>
+        <td><%= button_to( "Remove", user_path(user), method: :delete) %></td>
         <!-- <td><%#= button_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
       </tr>
     <% end %>
@@ -34,4 +43,3 @@
 
 <br>
 
-<h4>Create :-  <%= link_to 'New user', new_user_path %></h4>

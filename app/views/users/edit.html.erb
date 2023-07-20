@@ -1,13 +1,15 @@
 <p id="notice"><%= notice %></p>
 
-<h3>Update User Details</h3>
-<%= form_with model: @user do |form| %>
-  <%= form.text_field :name, placeholder: "Name" %>
-  <%= form.text_field :contact_number, placeholder: "Contact Number" %>
-  <%= form.text_field :address, placeholder: "Address" %>
-  <%= form.text_field :type, placeholder: "Role" %>
-  <%= form.text_field :role_description, placeholder: "Description" %>
-  <%= form.submit %>
-<% end %>
+<h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Update User Details</h3>
 
-<h4>Create New user :-  <%= link_to 'New user', new_user_path %></h4>
+<pre><%= link_to 'Add Member', new_user_path %>                        <%= link_to 'Home Page', users_path %></pre>
+
+<p><pre><%= form_with model: @user do |form| %>
+Name:-           <%= form.text_field :name, placeholder: "Name" %><br>
+Email:-          <%= form.text_field :email, placeholder: "Email" %><br>
+Phone Number:-   <%= form.text_field :contact_number, placeholder: "Contact Number" %><br>
+Address:-        <%= form.text_field :address, placeholder: "Address" %><br> 
+            <%= form.submit %>
+<% end %>
+</pre>
+</p>

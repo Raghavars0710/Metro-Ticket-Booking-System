@@ -1,11 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<h3>Create a User</h3>
-<%= form_with model: @user do |user| %>
-  <%= user.text_field :name, placeholder: "Name" %>
-  <%= user.text_field :contact_number, placeholder: "Contact Number" %>
-  <%= user.text_field :address, placeholder: "address" %>
-  <%= user.text_field :type, placeholder: "Role" %>
-  <%= user.text_field :role_description, placeholder: "Description" %>
-  <%= user.submit %>
+<h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ADD Member</h3>
+
+<p><pre><%= form_with model: @user do |form| %>
+Name:-           <%= form.text_field :name, placeholder: "Name" %><br>
+Email:-          <%= form.text_field :email, placeholder: "Email" %><br>
+Phone Number:-   <%= form.text_field :contact_number, placeholder: "Contact Number" %><br>
+Address:-        <%= form.text_field :address, placeholder: "Address" %><br> <br>
+<pre><%= form.submit %>                        <%= link_to 'Home Page', users_path %></pre>
 <% end %>
+</pre>
+</p>
