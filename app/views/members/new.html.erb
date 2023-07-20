@@ -1,2 +1,18 @@
-<h1>Members#new</h1>
-<p>Find me in app/views/members/new.html.erb</p>
+<p id="notice"><%= notice %></p>
+
+<pre><h3>          Add Member</h3></pre>
+
+<p><pre><%= form_with model: @member do |form| %>
+Name:-           <%= form.text_field :name, placeholder: "Name" %><br>
+Email:-          <%= form.text_field :email, placeholder: "Email" %><br>
+Phone Number:-   <%= form.text_field :contact_number, placeholder: "Contact Number" %><br>
+Address:-        <%= form.text_field :address, placeholder: "Address" %><br>
+DOB:-            <%= form.text_field :date_of_birth, placeholder: "Date Of Birth" %><br>
+Gender:          <%= form.select :gender, ["Male", "Female", "Other"] %><br> 
+Role:            <%= form.select :role, ["Employee", "Passenger", "Admin"] %><br>
+
+
+<pre><%= form.submit %>                        <%= link_to 'Home Page', users_path %></pre>
+<% end %>
+</pre>
+</p>

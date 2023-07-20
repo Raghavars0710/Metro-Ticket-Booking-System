@@ -1,51 +1,68 @@
 class MembersController < ApplicationController
  
-  before_action :current_mamber, only: [:show, :edit, :update, :destroy]
+  before_action :current_member, only: [:show, :edit, :update, :destroy]
+  before_action :current_user_members, only:[:index, :new, :create]
 
   def index
-    @mambers = Mamber.all
+    if @user
+      @members = @user.members.all
+    else 
+      redirect_to root_path, notice: "Members of User Not Found "
+    end
   end
 
   def new
-    @mamber = Mamber.new
+    if @user 
+      @member = @user.members.new
+    else 
+      redirect_to root_path, notice: "Members of User Not Found "
+    end
   end
 
   def show
+    @member = @user.members.find(params[:id])
   end
 
   def edit
   end
 
   def create
-    @mamber = Mamber.new(mamber_params) 
+    @member = @user.members.new(member_params) 
 
-    if @mamber.save!
-      redirect_to mamber_path(@mamber), notice: "mamber was successfuly created."
+    if @member.save!
+      redirect_to user_member_path(@member), notice: "Member was successfuly created."
     else
       render :new, notice: "Fill all field properly"
     end
   end
 
   def update
-   if @mamber.update(mamber_params)
-    redirect_to mamber_path, notice: "mamber was successfully Updated."
+ 
+   if @member.update(member_params)
+    redirect_to user_member_path, notice: "Member was successfully Updated."
    else
     render :edit
    end
   end
 
   def destroy
-    @mamber.destroy
-    redirect_to mambers_path, notice: "mamber was successfully deleted."
+    @member.destroy
+    redirect_to user_member_path, notice: "Member was successfully deleted."
   end
+
 
   private
 
-  def current_mamber
-    @mamber = Mamber.find(params[:id])
+  def current_user_members
+    @user = User.find(params[:user_id])
   end
 
-  def mamber_params
-    params.require(:mamber).permit(:name, :email, :contact_number, :address, :date_of_birth, :role, :gender)
+  def current_member
+    @user = User.find(params[:user_id])
+    @member = @user.members.find(params[:id])
+  end
+  
+  def member_params
+    params.require(:member).permit(:user_id, :name, :email, :contact_number, :address, :date_of_birth, :role, :gender)
   end
 end
