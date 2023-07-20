@@ -8,7 +8,9 @@
 Name:-           <%= form.text_field :name, placeholder: "Name" %><br>
 Email:-          <%= form.text_field :email, placeholder: "Email" %><br>
 Phone Number:-   <%= form.text_field :contact_number, placeholder: "Contact Number" %><br>
-Address:-        <%= form.text_field :address, placeholder: "Address" %><br> 
+Address:-        <%= form.text_field :address, placeholder: "Address" %><br>
+Date Of Birth:-  <%= form.text_field :date_of_birth, placeholder: "DOB" %><br> 
+Gender:          <%= form.select :gender, ["Male", "Female", "Other"] %><br> 
             <%= form.submit %>
 <% end %>
 </pre>
