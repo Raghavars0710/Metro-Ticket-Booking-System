@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  get 'members/index'
+  get 'members/new'
+  get 'members/create'
+  get 'members/show'
+  get 'members/edit'
+  get 'members/update'
+  get 'members/destroy'
   # get 'users/index'
   # get 'users/show'
   # get 'users/new'
