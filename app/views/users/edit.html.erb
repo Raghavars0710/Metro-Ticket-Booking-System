@@ -2,7 +2,7 @@
 
 <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Update User Details</h3>
 
-<pre><%= link_to 'Add User', new_user_path %>                   <%= link_to 'Home Page',user_path %></pre>
+<pre><%= link_to 'Add User Member', new_user_member_path(@user)%>                   <%= link_to 'Home Page',user_path %></pre>
 
 <p><pre><%= form_with model: @user do |form| %>
 Name:-           <%= form.text_field :name, placeholder: "Name" %><br>
