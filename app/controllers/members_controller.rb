@@ -30,14 +30,13 @@ class MembersController < ApplicationController
     @member = @user.members.new(member_params) 
 
     if @member.save!
-      redirect_to user_member_path(@member), notice: "Member was successfuly created."
+      redirect_to user_member_path(@user,@member), notice: "Member was successfuly created."
     else
       render :new, notice: "Fill all field properly"
     end
   end
 
   def update
- 
    if @member.update(member_params)
     redirect_to user_member_path, notice: "Member was successfully Updated."
    else

@@ -11,15 +11,15 @@ Rails.application.routes.draw do
   # get 'users/new'
   # get 'users/create'
   # get 'users/edit'
-  get 'users/send_user_to_member'
-  get 'members/find_user'
+  # get 'users/send_user_to_member'
+  # get 'members/find_user'
 
   
   resources :users do
     resources :members
   end
 
-resources :members
+  resources :members
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

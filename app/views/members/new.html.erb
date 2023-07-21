@@ -2,7 +2,7 @@
 
 <pre><h3>          Add Member</h3></pre>
 
-<p><pre><%= form_with model: @member do |form| %>
+<p><pre><%= form_with model: [@user, @member] do |form| %>
 Name:-           <%= form.text_field :name, placeholder: "Name" %><br>
 Email:-          <%= form.text_field :email, placeholder: "Email" %><br>
 Phone Number:-   <%= form.text_field :contact_number, placeholder: "Contact Number" %><br>
