@@ -1,0 +1,12 @@
+<h1>Metro Services</h1>
+<p>Metro To Metro Stations(routes)</p>
+
+
+<p><pre><%= form_with model: @metro_service do |form| %>
+
+Source:          <%= form.select :source, ["Airport_metro_station", "Super_corridor_metro_station", "Love_kush_metro_station","MR_10_metro_station" ,"Sukhliya_metro_station"," Bapat_metro_station", "Vijay_nagar_metro_station"] %><br> 
+Destination:     <%= form.select :destination,["Airport_metro_station", "Super_corridor_metro_station", "Love_kush_metro_station","MR_10_metro_station" ,"Sukhliya_metro_station"," Bapat_metro_station", "Vijay_nagar_metro_station"] %><br>
+
+         <%= form.submit %>         
+<% end %>
+</pre>
