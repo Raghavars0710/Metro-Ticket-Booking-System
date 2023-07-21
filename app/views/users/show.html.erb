@@ -1,15 +1,26 @@
 <p id="notice"><%= notice %></p>
 
-<h4><%= link_to 'Edit User Details', edit_user_path %>  &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <%= link_to 'Home Page', users_path %></h4>
+<h4><%= button_to( "Log Out", destroy_welcome_session_path, method: :delete ) %></h4>
+
+<h4><%= link_to 'Edit User Details', edit_user_path %></h4>
+
+<p>User Name:- <%= current_welcome.username%> </p>
+<p>User Id:- <%= current_welcome.id%></p>
 
 
-<pre>
-<p> Name :-            <%= @user.name %></p>
-<p> Email :-           <%= @user.email %></p>
-<p> Contact Number :-  <%= @user.contact_number %></p>
-<p> Address :-         <%= @user.address %></p>
-<p> DOB :-             <%= @user.date_of_birth %></p>
-<p> Gender :-          <%= @user.gender %></p>
-<p> Role :-            <%= @user.role %></p>
-</pre>
 
+
+<h2> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Details Of User</h2>
+
+<table border="4", color ="white">
+    <tr><thead><th>Name</th><td><%= @user.name %></td></thead> </tr>
+    <tr><tbody><th>Email</th><td><%= @user.email %></p></tbody> </tr>
+    <tr><tbody><th>Phone Number</th><td><%= @user.contact_number %></p></tbody> </tr>
+    <tr><tbody><th>Address</th><td><%= @user.address %></p></tbody> </tr>
+    <tr><tbody><th>DOB</th><td><%= @user.date_of_birth %></p></tbody> </tr>
+    <tr><tbody><th>Gender</th><td><%= @user.gender %></p></tbody> </tr>
+    <tr><tbody><th>Role</th><td><%= @user.role %></p></tbody> </tr>
+</table>
+
+
+<h4><%= link_to 'See Members', user_members_path(@user) %> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to 'Add Member', new_user_member_path(@user) %></h4>

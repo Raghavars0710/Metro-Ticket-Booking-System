@@ -17,27 +17,10 @@
       <th>Date Of Birth</th>
       <th>Gender</th>
       <th>Role</th>
-      <th colspan="5">Operations</th>
-      <!-- <th ></th> -->
+      <th colspan="5">Click Any Operations</th>
     </tr>
   </thead>
-
   <tbody>
-    <tr>
-      <td><%= current_welcome.username %></td>
-      <td><%= current_welcome.email %></td>
-      <td><%=  %></td>
-      <td><%=  %></td>
-      <td><%=  %></td>
-      <td><%=  %></td>
-      <td><%=  current_welcome.role%></td>
-      <td><%=  %></td>
-      <td><%=  %></td>
-      <td><%=  %></td>
-      <td><%=  %></td>
-      <td><%=  %></td>
-    </tr>
-
     <% @users.each do |user| %>
     <tr>
       <td><%= user.name %></td>
@@ -57,6 +40,9 @@
   </tbody>
 </table>
 
+
+
 <br>
 <p><%= link_to 'Add User', new_user_path %>  </p>
- 
+
+

@@ -1,16 +1,15 @@
 <p id="notice"><%= notice %></p>
 
-<pre><h3>          Add User</h3></pre>
+<h3> Edit Your Profile</h3>
 
 <p><pre><%= form_with model: @user do |form| %>
-Name:-           <%= form.text_field :name, placeholder: "Name" %><br>
-Email:-          <%= form.text_field :email, placeholder: "Email" %><br>
+Name:-           <%= form.text_field :name,value: current_welcome.username, placeholder: "name" %><br>
+Email:-          <%= form.text_field :email,value: current_welcome.email, placeholder: "Email" %><br>
 Phone Number:-   <%= form.text_field :contact_number, placeholder: "Contact Number" %><br>
 Address:-        <%= form.text_field :address, placeholder: "Address" %><br>
 DOB:-            <%= form.text_field :date_of_birth, placeholder: "Date Of Birth" %><br>
 Gender:          <%= form.select :gender, ["Male", "Female", "Other"] %><br> 
-Role:            <%= form.select :role, ["Employee", "Passenger", "Admin"] %><br>
-
+Role:            <%= form.select :role, ["Employee", "Passenger", "Admin"], selected: current_welcome.role  %><br>
 
 <pre><%= form.submit %>                        <%= link_to 'Home Page', users_path %></pre>
 <% end %>

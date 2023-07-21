@@ -19,13 +19,11 @@ Rails.application.routes.draw do
     resources :members
   end
 
-  resources :members
-
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   devise_for :welcomes , :controllers => {registrations: 'registrations'} do
     get 'devise/sessions#destroy'
   end
 
-  root "users#index"
+# root "users#index"
+  root "users#new"
 end

@@ -5,5 +5,7 @@ class User < ApplicationRecord
 
 	has_many :members ,dependent: :destroy
 
+	validates :name, uniqueness: true
+	validates :email, uniqueness: true
 end
 
