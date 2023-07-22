@@ -10,8 +10,11 @@ Address:-        <%= form.text_field :address, placeholder: "Address" %><br>
 DOB:-            <%= form.text_field :date_of_birth, placeholder: "Date Of Birth" %><br>
 Gender:          <%= form.select :gender, ["Male", "Female", "Other"] %><br> 
 Role:            <%= form.select :role, ["Employee", "Passenger", "Admin"], selected: current_welcome.role  %><br>
+ 
+                <%= form.submit %>
 
-<pre><%= form.submit %>                        <%= link_to 'Home Page', users_path %></pre>
+<pre><%= link_to 'Show Me Routes', new_metro_service_path %>                        <%= link_to 'Home Page', users_path %></pre>
 <% end %>
 </pre>
 </p>
+

@@ -1,2 +1,27 @@
 <h1>Trains#index</h1>
 <p>Find me in app/views/trains/index.html.erb</p>
+
+
+
+<h1>All Trains</h1>
+
+<table border="2", color ="white">
+  <thead>
+    <tr>
+      <th>Train Name</th>
+      <th>Train Number</th>
+      <th>Source</th>
+      <th>Destination</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @trains.each do |train| %>
+    <tr>
+      <td><%= train.name %></td>
+      <td><%= train.train_number %></td>
+      <td><%= train.source %></td>
+      <td><%= train.destination %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

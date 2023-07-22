@@ -6,9 +6,10 @@ class MetroServicesController < ApplicationController
   end
 
   def create
-    @metro_service = MetroService.new
-    if @metro_service.save!
-      redirect_to trains_path(@metro_service)  #change path to send metro service directly by train index
+    @metro_s = MetroService.new(metro_service_params)
+    if @metro_s.save!
+      @metro_service = MetroService.find_by(source:@metro_s.source, destination: @metro_s.destination)
+      redirect_to metro_service_trains_path(@metro_service)  #change path to send metro service directly by train index
     else
       render :new, notice: "Fill all field properly"
     end
