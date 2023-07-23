@@ -1,18 +1,51 @@
-<p id="notice"><%= notice %></p>
+<div style="text-align: center;">
+  <p id="notice" style="color: red;"><%= notice %></p>
+</div>
 
-<pre><h3>          Add Member</h3></pre>
+<div style="text-align: center;">
+  <h3 style="font-family: Arial;">Add Member</h3>
+</div>
 
-<p><pre><%= form_with model: [@user, @member] do |form| %>
-Name:-           <%= form.text_field :name, placeholder: "Name" %><br>
-Email:-          <%= form.text_field :email, placeholder: "Email" %><br>
-Phone Number:-   <%= form.text_field :contact_number, placeholder: "Contact Number" %><br>
-Address:-        <%= form.text_field :address, placeholder: "Address" %><br>
-DOB:-            <%= form.text_field :date_of_birth, placeholder: "Date Of Birth" %><br>
-Gender:          <%= form.select :gender, ["Male", "Female", "Other"] %><br> 
-Role:            <%= form.select :role, ["Employee", "Passenger", "Admin"] %><br>
+<div style="text-align: center;">
+  <%= form_with model: [@user, @member] do |form| %>
+    <div style="margin: 10px;">
+      <label style="font-weight: bold;">Name:</label>
+      <%= form.text_field :name, placeholder: "Name", style: "margin-left: 10px;" %>
+    </div>
 
+    <div style="margin: 10px;">
+      <label style="font-weight: bold;">Email:</label>
+      <%= form.text_field :email, placeholder: "Email", style: "margin-left: 10px;" %>
+    </div>
 
-<pre><%= form.submit %>                        <%= link_to 'Members Home Page', user_members_path %></pre>
-<% end %>
-</pre>
-</p>
+    <div style="margin: 10px;">
+      <label style="font-weight: bold;">Phone Number:</label>
+      <%= form.text_field :contact_number, placeholder: "Contact Number", style: "margin-left: 10px;" %>
+    </div>
+
+    <div style="margin: 10px;">
+      <label style="font-weight: bold;">Address:</label>
+      <%= form.text_field :address, placeholder: "Address", style: "margin-left: 10px;" %>
+    </div>
+
+    <div style="margin: 10px;">
+      <label style="font-weight: bold;">DOB:</label>
+      <%= form.text_field :date_of_birth, placeholder: "Date Of Birth", style: "margin-left: 10px;" %>
+    </div>
+
+    <div style="margin: 10px;">
+      <label style="font-weight: bold;">Gender:</label>
+      <%= form.select :gender, ["Male", "Female", "Other"], style: "margin-left: 10px;" %>
+    </div>
+
+    <div style="margin: 10px;">
+      <label style="font-weight: bold;">Role:</label>
+      <%= form.select :role, ["Employee", "Passenger", "Admin"], style: "margin-left: 10px;" %>
+    </div>
+
+    <div style="text-align: center; margin: 20px;">
+      <%= form.submit style: "background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px;" %>
+      <%= link_to 'Members Home Page', user_members_path, style: "background-color: #008CBA; color: white; padding: 10px 20px; text-decoration: none; border-radius: 4px; font-size: 16px; margin-left: 10px;" %>
+    </div>
+  <% end %>
+</div>
