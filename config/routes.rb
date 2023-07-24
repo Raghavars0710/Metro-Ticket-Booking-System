@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  # get 'tickets/index'
+  # get 'tickets/new'
+  # get 'tickets/create'
+  # get 'tickets/show'
+  # get 'tickets/edit'
+  # get 'tickets/update'
+  # get 'tickets/destory'
   # get 'trains/index'
   # get 'trains/new'
   # get 'trains/create'
@@ -29,25 +36,31 @@ Rails.application.routes.draw do
 
   # resources :trains
 
-  #  root "metro_services#new"
+  #  root "tickets#index"
+
+
+  resources :trains do
+    resources :tickets
+  end
 
 # --------------------------------------
 
 
 
-#   resources :metro_services do
-#     resources :trains
-#   end
-# get 'metro_services/new'
+  resources :metro_services do
+    resources :trains
+  end
   
-#   resources :users do
-#     resources :members
-#   end
+  get 'metro_services/new'
+  
+  resources :users do
+    resources :members
+  end
 
-#   devise_for :welcomes , :controllers => {registrations: 'registrations'} do
-#     get 'devise/sessions#destroy'
-#   end
+  devise_for :welcomes , :controllers => {registrations: 'registrations'} do
+    get 'devise/sessions#destroy'
+  end
 
 # # root "users#index"
-#   root "users#new"
+  root "users#new"
 end

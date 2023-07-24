@@ -1,0 +1,19 @@
+<h1>Tickets#new</h1>
+
+
+
+
+<pre><h3>          Book ticket</h3></pre>
+
+<p><pre><%= form_with model: [@train, @ticket] do |form| %>
+From:-               <%= form.text_field :source,value: @train.source %><br>
+To:-                 <%= form.text_field :destination,value: @train.destination %><br>
+price:-              <%= form.text_field :price%><br>
+book_date:-          <%= form.text_field :book_date,value: Time.now %><br>
+Train Name :-        <%= form.text_field :name,value: @train.name %><br>
+Train Number :-      <%= form.text_field :train_number,value: @train.train_number %><br>
+User Id :-           <%= form.text_field :user_id,value: "?"%><br>
+<pre><%= form.submit %>                        <%= link_to 'See All tickets', train_tickets_path %></pre>
+<% end %>
+</pre>
+</p>

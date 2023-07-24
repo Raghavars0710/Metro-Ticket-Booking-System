@@ -1,0 +1,17 @@
+<h1>Tickets#show</h1>
+
+
+<h2>Ticket Details</h2>
+
+<!-- 
+        <h4>
+            <%#= link_to 'Edit ticket Details', edit_train_ticket_path(@ticket) %>
+            <%#= link_to 'tickets Home Page', train_tickets_path %>
+        </h4> -->
+
+<p><strong>From:</strong> <%= @train.source %></p>
+<p><strong>To:</strong> <%= @train.destination %></p>
+<p><strong>Train name:</strong> <%= @train.name %></p>
+<p><strong>Train number:</strong> <%= @train.train_number %></p>
+<p><strong>book_date:</strong> <%= @ticket.book_date %></p>
+<p><strong>Price:</strong> <%= @ticket.price %></p>

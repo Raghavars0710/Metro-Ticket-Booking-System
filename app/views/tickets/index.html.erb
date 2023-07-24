@@ -1,0 +1,41 @@
+<h1>Tickets#index</h1>
+
+
+<p><%= button_to( "Log Out", destroy_welcome_session_path, method: :delete ) %></p>
+
+<p id="notice"><%= notice %></p>
+
+
+<h1>All Tickets</h1>
+
+<table border="3", color ="white">
+  <thead>
+    <tr>
+      <th>From</th>
+      <th>To</th>
+      <th>Train number</th>
+      <th>Train name</th>
+      <th>Book Date</th>
+      <th>Price</th>
+      <!-- <th colspan="5">Click Any Operations</th> -->
+    </tr>
+  </thead>
+  <tbody>
+    <% @tickets.each do |ticket| %>
+      <tr>
+        <td><%= @train.source %></td>
+        <td><%= @train.destination %></td>
+        <td><%= @train.train_number %></td>
+        <td><%= @train.name %></td>
+        <td><%= ticket.book_date %></td>
+        <td><%= ticket.price %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<br>
+<p><%#= link_to 'Add User', new_user_path %>  </p>
+
+

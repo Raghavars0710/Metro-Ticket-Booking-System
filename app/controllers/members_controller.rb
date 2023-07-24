@@ -57,7 +57,6 @@ class MembersController < ApplicationController
   end
 
   def current_member
-    @user = User.find(params[:user_id])
     @member = @user.members.find(params[:id])
   end
   

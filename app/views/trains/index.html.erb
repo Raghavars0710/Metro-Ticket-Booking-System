@@ -12,6 +12,7 @@
       <th>Train Number</th>
       <th>Source</th>
       <th>Destination</th>
+      <th>Book Ticket</th>
     </tr>
   </thead>
   <tbody>
@@ -21,6 +22,7 @@
       <td><%= train.train_number %></td>
       <td><%= train.source %></td>
       <td><%= train.destination %></td>
+      <td><%= link_to 'click', new_train_ticket_path(train) %></td>
     </tr>
     <% end %>
   </tbody>
