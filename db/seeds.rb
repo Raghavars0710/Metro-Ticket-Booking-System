@@ -1,11 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
-# "Airport_metro_station", "Super_corridor_metro_station", "Love_kush_metro_station","MR_10_metro_station" ,"Sukhliya_metro_station"," Bapat_metro_station", "Vijay_nagar_metro_station"
 
 # MetroService.create(source:"Airport_metro_station",destination:"Super_corridor_metro")
 # MetroService.create(source:"Airport_metro_station",destination:"Love_kush_metro")
@@ -63,3 +55,4 @@
 # Train.create(name: "Mahakal Super Fast Metro", train_number: 561234, source:"Sukhliya_metro_station", destination: "Vijay_nagar_metro" ,metro_service_id: 38)
 
 # Train.create(name: "Bapat - Vijaynagar ExpressMetro", train_number: 612345, source:"Bapat_metro_station", destination: "Vijay_nagar_metro" ,metro_service_id: 39)
+
