@@ -42,6 +42,7 @@ class TicketsController < ApplicationController
   def destory
   end
 
+
   private
 
   def current_train_tickets
