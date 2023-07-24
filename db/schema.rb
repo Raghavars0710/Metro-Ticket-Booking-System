@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_24_073517) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_24_074056) do
   create_table "members", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -38,6 +38,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_24_073517) do
     t.integer "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
+    t.integer "train_id", null: false
+    t.index ["train_id"], name: "index_tickets_on_train_id"
+    t.index ["user_id"], name: "index_tickets_on_user_id"
   end
 
   create_table "trains", force: :cascade do |t|
@@ -78,5 +82,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_24_073517) do
   end
 
   add_foreign_key "members", "users"
+  add_foreign_key "tickets", "trains"
+  add_foreign_key "tickets", "users"
   add_foreign_key "trains", "metro_services"
 end
