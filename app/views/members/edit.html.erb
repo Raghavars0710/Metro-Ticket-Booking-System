@@ -1,17 +1,57 @@
-<p id="notice"><%= notice %></p>
+<!DOCTYPE html>
+<html>
 
-<h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Update Member Details</h3>
+<head>
+    <title>Update Member Details</title>
+</head>
 
-<pre><%= link_to 'Add Member', new_user_member_path %>                        <%= link_to 'Back To Member Page', user_members_path %></pre>
+<body style="font-family: Arial, sans-serif;">
 
-<p><pre><%= form_with model: [@user, @member] do |form| %>
-Name:-           <%= form.text_field :name, placeholder: "Name" %><br>
-Email:-          <%= form.text_field :email, placeholder: "Email" %><br>
-Phone Number:-   <%= form.text_field :contact_number, placeholder: "Contact Number" %><br>
-Address:-        <%= form.text_field :address, placeholder: "Address" %><br>
-Date Of Birth:-  <%= form.text_field :date_of_birth, placeholder: "DOB" %><br> 
-Gender:          <%= form.select :gender, ["Male", "Female", "Other"] %><br> 
-            <%= form.submit %>
-<% end %>
-</pre>
-</p>
+    <p id="notice" style="margin-bottom: 20px; color: #ff0000; font-size: 16px;"><%= notice %></p>
+
+    <h3 style="margin-left: 20px; color: #007bff;">Update Member Details</h3>
+
+    <div style="margin-top: 20px;">
+        <a href="<%= new_user_member_path %>" style="text-decoration: none; color: #fff; background-color: #007bff; padding: 8px 15px; border-radius: 5px; margin-right: 10px;">Add Member</a>
+        <a href="<%= user_members_path %>" style="text-decoration: none; color: #fff; background-color: #007bff; padding: 8px 15px; border-radius: 5px;">Back To Member Page</a>
+    </div>
+
+    <div style="margin-top: 20px;">
+        <form action="<%= user_members_path %>" method="post">
+            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+            <label for="user_member_name" style="display: block; margin-bottom: 5px; font-weight: bold;">Name:-</label>
+            <input type="text" id="user_member_name" name="user[member][name]" placeholder="Name" style="padding: 5px; width: 200px; border: 1px solid #ccc; border-radius: 5px; margin-bottom: 10px;">
+            <br>
+
+            <label for="user_member_email" style="display: block; margin-bottom: 5px; font-weight: bold;">Email:-</label>
+            <input type="text" id="user_member_email" name="user[member][email]" placeholder="Email" style="padding: 5px; width: 200px; border: 1px solid #ccc; border-radius: 5px; margin-bottom: 10px;">
+            <br>
+
+            <label for="user_member_contact_number" style="display: block; margin-bottom: 5px; font-weight: bold;">Phone Number:-</label>
+            <input type="text" id="user_member_contact_number" name="user[member][contact_number]" placeholder="Contact Number" style="padding: 5px; width: 200px; border: 1px solid #ccc; border-radius: 5px; margin-bottom: 10px;">
+            <br>
+
+            <label for="user_member_address" style="display: block; margin-bottom: 5px; font-weight: bold;">Address:-</label>
+            <input type="text" id="user_member_address" name="user[member][address]" placeholder="Address" style="padding: 5px; width: 200px; border: 1px solid #ccc; border-radius: 5px; margin-bottom: 10px;">
+            <br>
+
+            <label for="user_member_date_of_birth" style="display: block; margin-bottom: 5px; font-weight: bold;">Date Of Birth:-</label>
+            <input type="text" id="user_member_date_of_birth" name="user[member][date_of_birth]" placeholder="DOB" style="padding: 5px; width: 200px; border: 1px solid #ccc; border-radius: 5px; margin-bottom: 10px;">
+            <br>
+
+            <label for="user_member_gender" style="display: block; margin-bottom: 5px; font-weight: bold;">Gender:</label>
+            <select id="user_member_gender" name="user[member][gender]" style="padding: 5px; width: 200px; border: 1px solid #ccc; border-radius: 5px; margin-bottom: 10px;">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+            </select>
+            <br>
+
+            <input type="submit" value="Submit" style="background-color: #007bff; color: #fff; padding: 8px 15px; border: none; border-radius: 5px; cursor: pointer;">
+        </form>
+    </div>
+
+</body>
+
+</html>
+

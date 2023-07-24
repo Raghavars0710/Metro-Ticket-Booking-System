@@ -1,11 +1,102 @@
-<p><%= button_to( "Log Out", destroy_welcome_session_path, method: :delete ) %> </p>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Your Page Title</title>
+  <style>
+    body {
+    
+      /* justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f2f2f2;  */
+      
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 10px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #333;
+      color: white;
+    }
+
+    
+    
+
+     h1 {
+      text-align: center;
+          color: blue ;
+    }
+    p{
+       text-align: center;
+    }
+    ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+li {
+  /* float: left; */
+  display;'flex';
+  justify-content:center;
+}
+
+li a {
+  /* display: block;   */
+  color: white;
+  text-align: center;
+  align-items:center;
+  /* padding: 14px  16px;   */
+  display:'flex';
+  text-decoration: none;
+  
+  
+}
+
+li a:hover {
+  background-color: #111;
+}
+  </style>
+</head>
+<body>
+    
+ <%= image_tag("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQU6r4JOaarc_KdpnDd1OhIwXI59CcpsNoKXA&usqp=CAU", alt: "Image Not Found", style: "height: 300px; width: 100%;") %>
+<ul 
+   display: flex;
+    justify-content: space-between;
+    align-items: center;  >
+   
+   
+        
+   <li> <p ><%= link_to 'Add User', new_user_path, style: 'background-color: white; color:black; padding:2px; margin-left:5px;' %>  </p></li>
+   <li> <h1>All Users</h1></li>
+  <li> <p><%= button_to( "Log Out", destroy_welcome_session_path, method: :delete ,style: 'background-color: white; padding:2px;' )   %> </p></li>
+  
+</ul>
+   
+  
+
 
 <p id="notice"><%= notice %></p>
 
 <p>User Name:- <%= current_welcome.username%> </p>
 <p>User Id:- <%= current_welcome.id%></p>
 
-<h1>All Users</h1>
+ 
 
 <table border="2", color ="white">
   <thead>
@@ -44,3 +135,5 @@
 
 <br>
 <p><%= link_to 'Add User', new_user_path %>  </p>
+
+

@@ -1,20 +1,114 @@
-<p id="notice"><%= notice %></p>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Your Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
 
-<h3> Edit Your Profile</h3>
+        .form-container {
+            text-align: center;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            max-width: 400px; /* Optional, set the maximum width of the form */
+        }
 
-<p><pre><%= form_with model: @user do |form| %>
-Name:-           <%= form.text_field :name,value: current_welcome.username, placeholder: "name" %><br>
-Email:-          <%= form.text_field :email,value: current_welcome.email, placeholder: "Email" %><br>
-Phone Number:-   <%= form.text_field :contact_number, placeholder: "Contact Number" %><br>
-Address:-        <%= form.text_field :address, placeholder: "Address" %><br>
-DOB:-            <%= form.text_field :date_of_birth, placeholder: "Date Of Birth" %><br>
-Gender:          <%= form.select :gender, ["Male", "Female", "Other"] %><br> 
-Role:            <%= form.select :role, ["Employee", "Passenger", "Admin"], selected: current_welcome.role  %><br>
- 
-                <%= form.submit %>
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
 
-<pre><%= link_to 'Show Me Routes', new_metro_service_path %>                        <%= link_to 'Home Page', users_path %></pre>
-<% end %>
-</pre>
-</p>
+        input[type="text"],
+        select {
+            padding: 5px;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
 
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .link-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .link-container a {
+            text-decoration: none;
+            color: #007bff;
+            margin-right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <p id="notice"><%= notice %></p>
+        <h3>Edit Your Profile</h3>
+        <form action="<%= users_path %>" method="post">
+            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+            <label for="user_name">Name:-</label>
+            <input type="text" id="user_name" name="user[name]" value="<%= current_welcome.username %>" placeholder="Name">
+            <br>
+
+            <label for="user_email">Email:-</label>
+            <input type="text" id="user_email" name="user[email]" value="<%= current_welcome.email %>" placeholder="Email">
+            <br>
+
+            <label for="user_contact_number">Phone Number:-</label>
+            <input type="text" id="user_contact_number" name="user[contact_number]" placeholder="Contact Number">
+            <br>
+
+            <label for="user_address">Address:-</label>
+            <input type="text" id="user_address" name="user[address]" placeholder="Address">
+            <br>
+
+            <label for="user_date_of_birth">DOB:-</label>
+            <input type="text" id="user_date_of_birth" name="user[date_of_birth]" placeholder="Date Of Birth">
+            <br>
+
+            <label for="user_gender">Gender:</label>
+            <select id="user_gender" name="user[gender]">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+            </select>
+            <br>
+
+            <label for="user_role">Role:</label>
+            <select id="user_role" name="user[role]">
+                <option value="Employee" <%= current_welcome.role == "Employee" ? "selected" : "" %>>Employee</option>
+                <option value="Passenger" <%= current_welcome.role == "Passenger" ? "selected" : "" %>>Passenger</option>
+                <option value="Admin" <%= current_welcome.role == "Admin" ? "selected" : "" %>>Admin</option>
+            </select>
+            <br>
+
+            <input type="submit" value="Submit">
+        </form>
+
+        <div class="link-container">
+            <p>
+                <%= link_to 'Show Me Routes', new_metro_service_path %>
+                <%= link_to 'Home Page', users_path %>
+            </p>
+        </div>
+    </div>
+
+</body>
+</html>
