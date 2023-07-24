@@ -1,6 +1,7 @@
 <h1>Tickets#new</h1>
 
 
+<p><%= button_to( "Log Out", destroy_welcome_session_path, method: :delete ) %></p>
 
 
 <pre><h3>          Book ticket</h3></pre>
@@ -8,11 +9,53 @@
 <p><pre><%= form_with model: [@train, @ticket] do |form| %>
 From:-               <%= form.text_field :source,value: @train.source %><br>
 To:-                 <%= form.text_field :destination,value: @train.destination %><br>
-<%if (@train.source == "Airport_metro_station" && @train.destination == "Love_kush_metro")%>
-Price:-              <%= form.text_field :price,value: 20%><br>
-<%else%>
-Price:-              <%= form.text_field :price,value: 45%><br>
-<%end%>
+<% price_value = case [@train.source, @train.destination]
+                   when ["Airport_metro_station", "Super_corridor_metro"]
+                     10
+                   when ["Airport_metro_station", "Love_kush_metro"]
+                     15
+                   when ["Airport_metro_station", "MR_10_metro"]
+                     20
+                   when ["Airport_metro_station", "Sukhliya_metro"]
+                     25
+                   when ["Airport_metro_station", "Bapat_metro"]
+                     30
+                   when ["Airport_metro_station", "Vijay_nagar_metro"]
+                     35
+                   when ["Super_corridor_metro_station", "Love_kush_metro"]
+                     10
+                   when ["Super_corridor_metro_station", "MR_10_metro"]
+                     15
+                   when ["Super_corridor_metro_station", "Sukhliya_metro"]
+                     20
+                   when ["Super_corridor_metro_station", "Bapat_metro"]
+                     25
+                   when ["Super_corridor_metro_station", "Vijay_nagar_metro"]
+                     30            
+                   when ["Love_kush_metro_station", "MR_10_metro"]
+                     10
+                   when ["Love_kush_metro_station", "Sukhliya_metro"]
+                     15
+                   when ["Love_kush_metro_station", "Bapat_metro"]
+                     20
+                   when ["Love_kush_metro_station", "Vijay_nagar_metro"]
+                     25                    
+                   when ["MR_10_metro_station", "Sukhliya_metro"]
+                     10
+                   when ["MR_10_metro_station", "Bapat_metro"]
+                     15
+                   when ["MR_10_metro_station", "Vijay_nagar_metro"]
+                     20
+                   when ["Sukhliya_metro_station", "Bapat_metro"]
+                     10
+                   when ["Sukhliya_metro_station", "Vijay_nagar_metro"]
+                     15                    
+                   when ["Bapat_metro_station", "Vijay_nagar_metro"]
+                     15
+                   else
+                     0
+                   end %>
+Price:-              <%= form.text_field :price, value: price_value %><br>
 book_date:-          <%= form.text_field :book_date,value: Time.now %><br>
 Train Name :-        <%= form.text_field :name,value: @train.name %><br>
 Train Number :-      <%= form.text_field :train_number,value: @train.train_number %><br>
