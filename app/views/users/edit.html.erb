@@ -59,56 +59,45 @@
 </head>
 <body>
     <div class="form-container">
-        <p id="notice"><%= notice %></p>
-        <h3>Update User Details</h3>
-        <form action="<%= users_path %>" method="post">
-            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-            <label for="user_name">Name:-</label>
-            <input type="text" id="user_name" name="user[name]" placeholder="Name">
-            <br>
+    <p id="notice"><%= notice %></p>
+    <h3>Update User Details</h3>
+    <%= form_for @user do |f| %>
+        <%= f.hidden_field :authenticity_token, value: form_authenticity_token %>
 
-            <label for="user_email">Email:-</label>
-            <input type="text" id="user_email" name="user[email]" placeholder="Email">
-            <br>
+        <label for="user_name">Name:</label>
+        <%= f.text_field :name, placeholder: "Name" %>
+        <br>
 
-            <label for="user_contact_number">Phone Number:-</label>
-            <input type="text" id="user_contact_number" name="user[contact_number]" placeholder="Contact Number">
-            <br>
+        <label for="user_email">Email:</label>
+        <%= f.text_field :email, placeholder: "Email" %>
+        <br>
 
-            <label for="user_address">Address:-</label>
-            <input type="text" id="user_address" name="user[address]" placeholder="Address">
-            <br>
+        <label for="user_contact_number">Phone Number:</label>
+        <%= f.text_field :contact_number, placeholder: "Contact Number" %>
+        <br>
 
-            <label for="user_date_of_birth">DOB:-</label>
-            <input type="text" id="user_date_of_birth" name="user[date_of_birth]" placeholder="Date Of Birth">
-            <br>
+        <label for="user_address">Address:</label>
+        <%= f.text_field :address, placeholder: "Address" %>
+        <br>
 
-            <label for="user_gender">Gender:</label>
-            <select id="user_gender" name="user[gender]">
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-                <option value="Other">Other</option>
-            </select>
-            <br>
+        <label for="user_date_of_birth">DOB:</label>
+        <%= f.text_field :date_of_birth, placeholder: "Date Of Birth" %>
+        <br>
 
-            <label for="user_role">Role:</label>
-            <select id="user_role" name="user[role]">
-                <option value="Employee">Employee</option>
-                <option value="Passenger">Passenger</option>
-                <option value="Admin">Admin</option>
-            </select>
-            <br>
+        <label for="user_gender">Gender:</label>
+        <%= f.select :gender, ["Male", "Female", "Other"] %>
+        <br>
 
-            <input type="submit" value="Submit">
-        </form>
+        <%= f.submit "Submit" %>
+    <% end %>
 
-        <div class="link-container">
-            <p>
-                <%= link_to 'Add User Member', new_user_member_path(@user) %>
-                <%= link_to 'Home Page', user_path %>
-            </p>
-        </div>
-    </div>
+  <div class="link-container">
+    <p>
+      <%= link_to 'Add User Member', new_user_member_path(@user) %>
+      <%= link_to 'Home Page', user_path %>
+    </p>
+  </div>
+</div>
 
 </body>
 </html>

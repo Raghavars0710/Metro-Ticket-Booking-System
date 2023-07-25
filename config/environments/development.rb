@@ -70,14 +70,21 @@ Rails.application.configure do
 
 
 
-  config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = { :address => "localhost", :port => 1025}
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.default_url_options = { host: "localhost", port: 3000}
 
-
-
-
-
+  
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :address => 'localhost',
+    :port => 587,
+    :domain => 'localhost',
+    :user_name => 'd8fafdc9c08eb8',
+    :password => '06f2ff3178d990',
+    :authentication => :cram_md5,
+    :enable_starttls_auto => true
+  }
 
 end

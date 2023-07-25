@@ -91,13 +91,6 @@
             </select>
             <br>
 
-            <label for="user_role">Role:</label>
-            <select id="user_role" name="user[role]">
-                <option value="Employee" <%= current_welcome.role == "Employee" ? "selected" : "" %>>Employee</option>
-                <option value="Passenger" <%= current_welcome.role == "Passenger" ? "selected" : "" %>>Passenger</option>
-                <option value="Admin" <%= current_welcome.role == "Admin" ? "selected" : "" %>>Admin</option>
-            </select>
-            <br>
 
             <input type="submit" value="Submit">
         </form>

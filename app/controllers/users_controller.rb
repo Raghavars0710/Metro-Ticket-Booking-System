@@ -19,11 +19,12 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)  # create new user for perticuler perams by using user_params private method 
-
+     @user.role = current_welcome.role
     if @user.save!  # if user is save then show @user by using show user_path route 
+      UserMailer.welcome_email(@user).deliver_now  # Send the welcome email
       redirect_to user_path(@user), notice: "User was successfuly created."
-    else  # else to render new action for again create new user 
-      render :new, notice: "Fill all field properly"  
+    else 
+      render :new, notice: "Fill all field properly"   # Code for handling failed user creation
     end
   end
 
