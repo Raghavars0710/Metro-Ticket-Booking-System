@@ -1,14 +1,14 @@
 class UsersController < ApplicationController
   
-  before_action :current_user, only: [:show, :edit, :update, :destroy]
+  before_action :current_user, only: [:show, :edit, :update, :destroy]  # Add filter before action for perticuler actions
 
 
   def index
-    @users = User.all
+    @users = User.all  # Select All user from user model
   end
 
   def new
-    @user = User.new
+    @user = User.new  
   end
 
   def show
@@ -18,17 +18,17 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params) 
+    @user = User.new(user_params)  # create new user for perticuler perams by using user_params private method 
 
-    if @user.save!
+    if @user.save!  # if user is save then show @user by using show user_path route 
       redirect_to user_path(@user), notice: "User was successfuly created."
-    else
-      render :new, notice: "Fill all field properly"
+    else  # else to render new action for again create new user 
+      render :new, notice: "Fill all field properly"  
     end
   end
 
   def update
-   if @user.update(user_params)
+   if @user.update(user_params)  #update user data by using  update method to permit by user_perams private method
     redirect_to user_path, notice: "user was successfully Updated."
    else
     render :edit

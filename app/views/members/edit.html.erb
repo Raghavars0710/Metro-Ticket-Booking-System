@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 
 <head>
@@ -55,3 +55,25 @@
 
 </html>
 
+
+ ______________________________________________________________
+
+ -->
+
+ <p id="notice"><%= notice %></p>
+
+<h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Update Member Details</h3>
+
+<pre><%= link_to 'Add Member', new_user_member_path %>                        <%= link_to 'Back To Member Page', user_members_path %></pre>
+
+<p><pre><%= form_with model: [@user, @member] do |form| %>
+Name:-           <%= form.text_field :name, placeholder: "Name" %><br>
+Email:-          <%= form.text_field :email, placeholder: "Email" %><br>
+Phone Number:-   <%= form.text_field :contact_number, placeholder: "Contact Number" %><br>
+Address:-        <%= form.text_field :address, placeholder: "Address" %><br>
+Date Of Birth:-  <%= form.text_field :date_of_birth, placeholder: "DOB" %><br> 
+Gender:          <%= form.select :gender, ["Male", "Female", "Other"] %><br> 
+            <%= form.submit %>
+<% end %>
+</pre>
+</p>

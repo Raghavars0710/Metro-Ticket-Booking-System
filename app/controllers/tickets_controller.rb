@@ -1,11 +1,10 @@
 class TicketsController < ApplicationController
-  before_action :current_ticket, only: [:show, :edit, :update, :destroy]
-  before_action :current_train_tickets, only:[:index, :new, :create]
+  before_action :current_ticket, only: [:show, :edit, :update, :destroy] # Add filter before action for perticuler actions
+  before_action :current_train_tickets, only:[:index, :new, :create]  
   # before_action :current_user_tickets , only: [:index,:new,:create]
 
 
   def index
-
     if @train 
       @tickets = @train.tickets.all
     end
@@ -18,18 +17,19 @@ class TicketsController < ApplicationController
   end
 
   def create
-    
     if @train 
       @ticket = @train.tickets.new(ticket_params)
+      @ticket.price = calculate_price(@train.source, @train.destination) #for set price by defult
       if @ticket.save!
-        redirect_to train_ticket_path(@train,@ticket)
+        redirect_to train_ticket_path(@train,@ticket)  #redirect to ticket show path
       end
     end
   end
 
   def show
     if @train
-      @ticket = @train.tickets.find(params[:id])
+      @ticket = @train.tickets.find(params[:id]) #s find the train tickets id 
+      @ticket.price = calculate_price(@train.source, @train.destination) # show set price by default
     end
   end
 
@@ -45,7 +45,7 @@ class TicketsController < ApplicationController
 
   private
 
-  def current_train_tickets
+  def current_train_tickets   #find Train id from Train model
     @train = Train.find(params[:train_id])
   end
 
@@ -54,8 +54,58 @@ class TicketsController < ApplicationController
     @ticket = @train.tickets.find(params[:id])
   end
 
-  def ticket_params
+  def ticket_params 
     params.require(:ticket).permit(:user_id,:train_id,:price, :book_date,:train_id)
+  end
+
+
+  def calculate_price(source, destination) #this method is create for set price default 
+    case [source, destination]
+     when ["Airport_metro_station", "Super_corridor_metro"]
+       10
+     when ["Airport_metro_station", "Love_kush_metro"]
+       15
+     when ["Airport_metro_station", "MR_10_metro"]
+       20
+     when ["Airport_metro_station", "Sukhliya_metro"]
+       25
+     when ["Airport_metro_station", "Bapat_metro"]
+       30
+     when ["Airport_metro_station", "Vijay_nagar_metro"]
+       35
+     when ["Super_corridor_metro_station", "Love_kush_metro"]
+       10
+     when ["Super_corridor_metro_station", "MR_10_metro"]
+       15
+     when ["Super_corridor_metro_station", "Sukhliya_metro"]
+       20
+     when ["Super_corridor_metro_station", "Bapat_metro"]
+       25
+     when ["Super_corridor_metro_station", "Vijay_nagar_metro"]
+       30            
+     when ["Love_kush_metro_station", "MR_10_metro"]
+       10
+     when ["Love_kush_metro_station", "Sukhliya_metro"]
+       15
+     when ["Love_kush_metro_station", "Bapat_metro"]
+       20
+     when ["Love_kush_metro_station", "Vijay_nagar_metro"]
+       25                    
+     when ["MR_10_metro_station", "Sukhliya_metro"]
+       10
+     when ["MR_10_metro_station", "Bapat_metro"]
+       15
+     when ["MR_10_metro_station", "Vijay_nagar_metro"]
+       20
+     when ["Sukhliya_metro_station", "Bapat_metro"]
+       10
+     when ["Sukhliya_metro_station", "Vijay_nagar_metro"]
+       15                    
+     when ["Bapat_metro_station", "Vijay_nagar_metro"]
+       15
+     else
+       0
+    end
   end
 
 end

@@ -1,5 +1,5 @@
 class MetroServicesController < ApplicationController
-  before_action :current_metro_service, only: [:show]
+  before_action :current_metro_service, only: [:show] # Add filter before action for perticuler actions
 
   def new
     @metro_service = MetroService.new

@@ -1,14 +1,14 @@
 class TrainsController < ApplicationController
-    before_action :current_user, only: [:show, :edit, :update, :destroy]
+    before_action :current_user, only: [:show, :edit, :update, :destroy] # Add filter before action for perticuler actions
 
     def index
-        @metro_service = MetroService.find_by(id: params[:metro_service_id])
-      if @metro_service
+        @metro_service = MetroService.find_by(id: params[:metro_service_id])  # find metro_service id
+      if @metro_service # if Metro_service is find then go to check there metro_service.trains and find perticuler source and destination by using below querry
         @trains = @metro_service.trains.where(source: @metro_service.source,destination: @metro_service.destination)
       else
         # Handle the case when @metro_service is nil
         # You might want to render an error message or redirect to another page.
-        # redirect_to : metro_service ke create pr send kr do
+        render :index , notice: "This service not found please search again"  
       end
     end
   
@@ -23,9 +23,9 @@ class TrainsController < ApplicationController
     end
   
     def create
-      @train = @metro_service.trains.new(train_params) 
+      @train = @metro_service.trains.new(train_params)  #create prticular metro service trains
   
-      if @train.save!
+      if @train.save! 
         redirect_to train_path(@train), notice: "Train was successfuly created."
       else
         render :new, notice: "Fill all field properly"

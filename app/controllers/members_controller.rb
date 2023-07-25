@@ -1,7 +1,7 @@
 class MembersController < ApplicationController
  
-  before_action :current_member, only: [:show, :edit, :update, :destroy]
-  before_action :current_user_members, only:[:index, :new, :create]
+  before_action :current_member, only: [:show, :edit, :update, :destroy] # Add filter before action for perticuler actions
+  before_action :current_user_members, only:[:index, :new, :create]  
 
   def index
     if @user
@@ -57,6 +57,7 @@ class MembersController < ApplicationController
   end
 
   def current_member
+    @user = User.find(params[:user_id])
     @member = @user.members.find(params[:id])
   end
   
