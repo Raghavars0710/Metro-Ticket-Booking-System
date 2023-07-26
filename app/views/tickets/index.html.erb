@@ -3,39 +3,54 @@
 
 <p><%= button_to( "Log Out", destroy_welcome_session_path, method: :delete ) %></p>
 
-<p id="notice"><%= notice %></p>
 
 
-<h1>All Tickets</h1>
 
-<table border="3", color ="white">
-  <thead>
-    <tr>
-      <th>From</th>
-      <th>To</th>
-      <th>Train number</th>
-      <th>Train name</th>
-      <th>Book Date</th>
-      <th>Price</th>
-      <!-- <th colspan="5">Click Any Operations</th> -->
-    </tr>
-  </thead>
-  <tbody>
-    <% @tickets.each do |ticket| %>
-      <tr>
-        <td><%= @train.source %></td>
-        <td><%= @train.destination %></td>
-        <td><%= @train.train_number %></td>
-        <td><%= @train.name %></td>
-        <td><%= ticket.book_date %></td>
-        <td><%= ticket.price %></td>
-      </tr>
+<div class="card text-center">
+  <div class="card-header">
+    <h1>View <%= @train.name %> Bookings</h1>
+  </div>
+  <div class="card-body">
+    <% if @train.tickets.present? %>
+      <h3>Total Tickets - <%= @train.tickets.count %> </h3>
+      <div class="table-responsive">
+        <table border="2", class="table table-bordered table-striped">
+          <thead>
+            <tr>
+                <th>From</th>
+                <th>To</th>
+                <th>Train number</th>
+                <th>Train name</th>
+                <th>Book Date</th>
+                <th>Price</th>
+                <th colspan="2">Click Any Operations</th>
+            </tr> 
+          </thead>
+          <tbody>
+            <% @train.tickets.each do |ticket| %>
+              <tr>
+                  <td><%= @train.source %></td>
+                  <td><%= @train.destination %></td>
+                  <td><%= @train.train_number %></td>
+                  <td><%= @train.name %></td>
+                  <td><%= ticket.book_date %></td>
+                  <td><%= ticket.price %></td>
+                  <td>
+                    <%= link_to 'Details', train_ticket_path(@train,ticket), class: "btn btn-info" %>                    
+                  </td>
+                  <td>                    
+                    <%= button_to( "Remove User", train_ticket_path(@train,ticket), method: :delete) %>                    
+                  </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    <% else %>
+      <p>You have no tickets.</p>
     <% end %>
-  </tbody>
-</table>
-
-
-<br>
-<p><%#= link_to 'Add User', new_user_path %>  </p>
-
-
+  </div>
+  <!-- <div class="d-grid gap-2 col-2 mx-auto">
+    <%#= link_to "Back", :back, class: "btn btn-primary" %>
+  </div> -->
+</div>

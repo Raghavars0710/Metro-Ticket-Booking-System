@@ -7,6 +7,8 @@ class TicketsController < ApplicationController
   def index
     if @train 
       @tickets = @train.tickets.all
+    # else
+    #   @tickets = @user.tickets.all
     end
   end
 
@@ -39,7 +41,9 @@ class TicketsController < ApplicationController
   def update
   end
 
-  def destory
+  def destroy
+    @ticket.destroy
+    redirect_to train_tickets_path, notice: "ticket was successfully deleted."
   end
 
 
@@ -49,7 +53,12 @@ class TicketsController < ApplicationController
     @train = Train.find(params[:train_id])
   end
 
+  def current_user_tickets   #find Train id from Train model
+    # @train = User.find(params[:user_id])
+  end
+
   def current_ticket
+    # @user = User.find(params[:user_id])
     @train = Train.find(params[:train_id])
     @ticket = @train.tickets.find(params[:id])
   end

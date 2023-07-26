@@ -21,7 +21,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_25_125429) do
     t.integer "role", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id", null: false
+    t.integer "user_id"
     t.index ["user_id"], name: "index_members_on_user_id"
   end
 
@@ -30,6 +30,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_25_125429) do
     t.integer "destination"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_metro_services_on_user_id"
   end
 
   create_table "tickets", force: :cascade do |t|
@@ -87,6 +89,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_25_125429) do
   end
 
   add_foreign_key "members", "users"
+  add_foreign_key "metro_services", "users"
   add_foreign_key "tickets", "trains"
   add_foreign_key "tickets", "users"
   add_foreign_key "trains", "metro_services"
