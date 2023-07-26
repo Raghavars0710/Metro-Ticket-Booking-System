@@ -33,13 +33,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_25_125429) do
   end
 
   create_table "tickets", force: :cascade do |t|
+    t.time "book_time"
     t.date "book_date"
     t.integer "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id", null: false
     t.integer "train_id", null: false
-    t.time "book_time"
     t.index ["train_id"], name: "index_tickets_on_train_id"
     t.index ["user_id"], name: "index_tickets_on_user_id"
   end
