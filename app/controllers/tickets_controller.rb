@@ -1,28 +1,31 @@
 class TicketsController < ApplicationController
   before_action :current_ticket, only: [:show, :edit, :update, :destroy] # Add filter before action for perticuler actions
-  before_action :current_train_tickets, only:[:index, :new, :create]  
+  before_action :current_train_tickets, only:[:index]  
   # before_action :current_user_tickets , only: [:index,:new,:create]
 
 
   def index
     if @train 
       @tickets = @train.tickets.all
-    # else
-    #   @tickets = @user.tickets.all
     end
   end
 
   def new
+    @train = Train.find(params[:train_id])
     if @train 
       @ticket = @train.tickets.new
     end
+    @user = MetroService.last.user.id
   end
 
   def create
+    @train = Train.find(params[:train_id])
     if @train 
       @ticket = @train.tickets.new(ticket_params)
       @ticket.price = calculate_price(@train.source, @train.destination) #for set price by defult
+      @user = MetroService.last.user.id
       if @ticket.save!
+        TicketConfirmationMailer.ticket_confirmation_email(@train,@ticket).deliver_now
         redirect_to train_ticket_path(@train,@ticket)  #redirect to ticket show path
       end
     end

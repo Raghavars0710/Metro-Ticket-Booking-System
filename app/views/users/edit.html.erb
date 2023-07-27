@@ -60,7 +60,7 @@
 <body>
     <div class="form-container">
     <p id="notice"><%= notice %></p>
-    <h3>Update User Details</h3>
+    <h3>Edit Profile</h3>
     <%= form_for @user do |f| %>
         <%= f.hidden_field :authenticity_token, value: form_authenticity_token %>
 
@@ -88,12 +88,12 @@
         <%= f.select :gender, ["Male", "Female", "Other"] %>
         <br>
 
-        <%= f.submit "Submit" %>
+        <%= f.submit "Save" %>
     <% end %>
 
   <div class="link-container">
     <p>
-      <%= link_to 'Add User Member', new_user_member_path(@user) %>
+      <%= link_to 'Add Member', new_user_member_path(@user) %>
       <%= link_to 'Home Page', user_path %>
     </p>
   </div>

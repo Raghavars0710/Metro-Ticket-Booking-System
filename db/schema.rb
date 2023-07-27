@@ -53,8 +53,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_25_125429) do
     t.string "destination"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "metro_service_id"
-    t.index ["metro_service_id"], name: "index_trains_on_metro_service_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -92,5 +90,4 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_25_125429) do
   add_foreign_key "metro_services", "users"
   add_foreign_key "tickets", "trains"
   add_foreign_key "tickets", "users"
-  add_foreign_key "trains", "metro_services"
 end
