@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Welcome to Metro App!</title>
+</head>
+<body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; background-color: #f6f6f6;">
+  <div style="max-width: 600px; margin: 0 auto; padding: 20px; background-color: #fff; border-radius: 5px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+    <h1 style="text-align: center; color: #0066cc;">Thank You User For Booking Ticket</h1>
+    <p style="font-size: 16px;">Your Ticket is confirmed</p>
+    <p style="font-size: 16px;"><strong>Train name:</strong> <%= @train.name %></p>
+    <p style="font-size: 16px;"><strong>From:</strong><%= @train.source %></p>
+    <p style="font-size: 16px;"><strong>To: </strong><%= @train.destination %></p>
+    <p style="font-size: 16px;"><strong>Book Time:</strong><%= @ticket.book_date %></p>
+    <p style="font-size: 16px;"><strong>Total Price:</strong><%= @ticket.price %></p>
+
+    <!-- Add more content as needed -->
+  </div>
+</body>
+</html>
+
+
+
+

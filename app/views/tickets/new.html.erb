@@ -12,8 +12,8 @@ To:-                 <%= form.text_field :destination,value: @train.destination 
 book_date:-          <%= form.text_field :book_date,value: Time.now %><br>
 Train Name :-        <%= form.text_field :name,value: @train.name %><br>
 Train Number :-      <%= form.text_field :train_number,value: @train.train_number %><br>
-User Id :-           <%= form.text_field :user_id,value: "?"%><br>
-<pre><%= form.submit %>                        <%= link_to 'See All tickets', train_tickets_path %></pre>
+User Id :-           <%= form.text_field :user_id,value: @user%><br>
+<pre><%= form.submit %>                        <%#= link_to 'See All tickets', train_tickets_path %></pre>
 <% end %>
 </pre>
 </p>

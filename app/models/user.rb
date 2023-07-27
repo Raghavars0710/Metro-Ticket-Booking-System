@@ -9,5 +9,7 @@ class User < ApplicationRecord
     has_many :metro_services ,dependent: :destroy
 	has_many :tickets ,dependent: :destroy
 	has_many :trains, through: :tickets, dependent: :destroy
+	# belongs_to :welcome
+
 end
 

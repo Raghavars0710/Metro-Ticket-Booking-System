@@ -2,11 +2,8 @@ class TrainsController < ApplicationController
     before_action :current_user, only: [:show, :edit, :update, :destroy] # Add filter before action for perticuler actions
 
     def index
-      # byebug
       if params[:trains].present?
         @trains = Train.where(id: params[:trains])
-      else
-        # @trains = Train.all
       end
     end
   
