@@ -3,4 +3,6 @@ class Train < ApplicationRecord
 
     has_many :tickets, dependent: :destroy
     has_many :users, through: :tickets, dependent: :destroy
+
+    default_scope -> { order(created_at: :desc) }
 end

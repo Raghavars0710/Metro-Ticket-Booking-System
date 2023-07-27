@@ -111,7 +111,8 @@ li a:hover {
 
 <p ><%= link_to 'See Members', user_members_path(@user), style: 'background-color: yellow; color:black; padding:2px; margin-left:5px;' %> <%= link_to 'Add Member', new_user_member_path(@user), style: 'background-color: yellow; color:black; padding:2px; margin-left:5px;' %> </p>
 
-<p ><%= link_to 'Show Me Routes', new_metro_service_path, style: 'background-color: yellow; color:black; padding:2px; margin-left:5px;' %>  </p>
+<p ><%= link_to 'Show Me Routes', new_user_metro_service_path(@user), style: 'background-color: yellow; color:black; padding:2px; margin-left:5px;' %>  </p>
+<!-- <p><%#= link_to 'See tickets', user_tickets_path(@user) %></p> -->
 
 
 </body>

@@ -49,7 +49,7 @@ gem 'devise'
 
 gem 'byebug'
 
-gem 'mailcatcher'
+# gem 'mailcatcher'
 
 gem 'mailtrap'
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
@@ -66,7 +66,7 @@ group :development do
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
-
+  # gem 'mailtrap'
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
 end

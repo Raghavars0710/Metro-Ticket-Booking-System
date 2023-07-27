@@ -1,38 +1,5 @@
 Rails.application.routes.draw do
-  # get 'tickets/index'
-  # get 'tickets/new'
-  # get 'tickets/create'
-  # get 'tickets/show'
-  # get 'tickets/edit'
-  # get 'tickets/update'
-  # get 'tickets/destory'
-  # get 'trains/index'
-  # get 'trains/new'
-  # get 'trains/create'
-  # get 'trains/show'
-  # get 'trains/edit'
-  # get 'trains/update'
-  # get 'trains/destroy'
- 
-  # get 'metro_services/create'
-  # get 'metro_services/edit'
-  # get 'metro_services/update'
-  # get 'metro_services/show'
-  # # get 'members/index'
-  # get 'members/new'
-  # get 'members/create'
-  # get 'members/show'
-  # get 'members/edit'
-  # get 'members/update'
-  # get 'members/destroy'
-  # # get 'users/index'
-  # get 'users/show'
-  # get 'users/new'
-  # get 'users/create'
-  # get 'users/edit'
-  # get 'users/send_user_to_member'
-  # get 'members/find_user'
-  
+
 
   # resources :trains
 
@@ -43,6 +10,12 @@ Rails.application.routes.draw do
     resources :tickets
   end
 
+
+  resources :users do
+    resources :metro_services
+  end
+
+
 # --------------------------------------
 
 
@@ -51,7 +24,7 @@ Rails.application.routes.draw do
     resources :trains
   end
   
-  get 'metro_services/new'
+  # get 'metro_services/new'
   
   resources :users do
     resources :members
