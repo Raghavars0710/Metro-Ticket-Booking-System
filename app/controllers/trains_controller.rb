@@ -2,13 +2,11 @@ class TrainsController < ApplicationController
     before_action :current_user, only: [:show, :edit, :update, :destroy] # Add filter before action for perticuler actions
 
     def index
-        @metro_service = MetroService.find_by(id: params[:metro_service_id])  # find metro_service id
-      if @metro_service # if Metro_service is find then go to check there metro_service.trains and find perticuler source and destination by using below querry
-        @trains = @metro_service.trains.where(source: @metro_service.source,destination: @metro_service.destination)
+      # byebug
+      if params[:trains].present?
+        @trains = Train.where(id: params[:trains])
       else
-        # Handle the case when @metro_service is nil
-        # You might want to render an error message or redirect to another page.
-        render :index , notice: "This service not found please search again"  
+        # @trains = Train.all
       end
     end
   

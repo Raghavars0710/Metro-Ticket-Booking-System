@@ -87,8 +87,8 @@ li a:hover {
    
    
         
-   <li> <p ><%= link_to 'Edit User Details', edit_user_path, style: 'background-color: white; color:black; padding:2px; margin-left:5px;' %>  </p></li>
-   <li> <h1>Details Of User</h1></li>
+   <li> <p ><%= link_to 'Edit Profile', edit_user_path, style: 'background-color: white; color:black; padding:2px; margin-left:5px;' %>  </p></li>
+   <li> <h1>Details Of <%=@user.name%></h1></li>
   <li> <p><%= button_to( "Log Out", destroy_welcome_session_path, method: :delete ,style: 'background-color: white; padding:2px;' )   %> </p></li>
   
 </ul>

@@ -12,8 +12,8 @@ class MetroServicesController < ApplicationController
     if @user
       @metro_s = @user.metro_services.new(metro_service_params)
       if @metro_s.save
-        # @metro_service = MetroService.find_by(source:@metro_s.source, destination: @metro_s.destination)
-        redirect_to user_metro_service_path(@user,@metro_s)  #change path to send metro service directly by train index
+        @trains = Train.where(source: @metro_s.source, destination: @metro_s.destination)
+        redirect_to trains_path(trains: @trains.pluck(:id))
       else
         render :new, notice: "Fill all field properly"
       end
