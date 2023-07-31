@@ -2,6 +2,7 @@ class MetroServicesController < ApplicationController
  
   def index
     @metro_s = MetroService.all
+    @metro_s = MetroService.paginate(page: params[:page], per_page: 5)
   end
 
   def new

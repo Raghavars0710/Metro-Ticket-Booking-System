@@ -3,6 +3,7 @@ class TrainsController < ApplicationController
     def index
       @metro_service = MetroService.find_by(id: params[:metro_service_id])
       @trains = @metro_service.trains.all
+      @trains = @metro_service.trains.paginate(page: params[:page], per_page: 5)
     end
   
     def new
@@ -16,6 +17,7 @@ class TrainsController < ApplicationController
   
     def all_trains
       @trains = Train.all
+      @trains = Train.paginate(page: params[:page], per_page: 6)
     end
 
     def edit
