@@ -1,15 +1,20 @@
 class User < ApplicationRecord
+    before_save :downcase_gender
 
-	enum role: {Passenger: 0, Employee: 1, Admin: 2}
-	enum gender: {Male: 0, Female: 1, Other: 2}
+    devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable, :confirmable
+         
+    has_many :members
+    has_many :tickets
 
-	validates :email, uniqueness: true
+    validates :name, presence: true, length: { minimum: 2 },uniqueness: true
+    validates :contact_number, length: { is: 10 }, uniqueness: true
+    validates :gender, inclusion: { in: ['male', 'female', 'other'], message: "must be male, female, or other" }
+    
+    scope :passengers, -> { where(role: 'Passenger') }
+    private
 
-	has_many :members ,dependent: :destroy
-    has_many :metro_services ,dependent: :destroy
-	has_many :tickets ,dependent: :destroy
-	has_many :trains, through: :tickets, dependent: :destroy
-	# belongs_to :welcome
-
+    def downcase_gender
+      self.gender = gender.downcase if gender.present?
+    end
 end
-

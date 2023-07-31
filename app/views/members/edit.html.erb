@@ -59,21 +59,119 @@
  ______________________________________________________________
 
  -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Your Page Title</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #f2f2f2;
+      font-family: Arial, sans-serif;
+    }
 
- <p id="notice"><%= notice %></p>
+    h3 {
+      text-align: center;
+      color: blue;
+    }
 
-<h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Update Member Details</h3>
+    p {
+      text-align: center;
+      margin-bottom: 20px;
+    }
 
-<pre><%= link_to 'Add Member', new_user_member_path %>                        <%= link_to 'Back To Member Page', user_members_path %></pre>
+    a.button {
+      display: inline-block;
+      background-color: #333;
+      color: #fff;
+      padding: 10px 20px;
+      text-decoration: none;
+      margin-right: 10px;
+      border-radius: 5px;
+    }
 
-<p><pre><%= form_with model: [@user, @member] do |form| %>
-Name:-           <%= form.text_field :name, placeholder: "Name" %><br>
-Email:-          <%= form.text_field :email, placeholder: "Email" %><br>
-Phone Number:-   <%= form.text_field :contact_number, placeholder: "Contact Number" %><br>
-Address:-        <%= form.text_field :address, placeholder: "Address" %><br>
-Date Of Birth:-  <%= form.text_field :date_of_birth, placeholder: "DOB" %><br> 
-Gender:          <%= form.select :gender, ["Male", "Female", "Other"] %><br> 
-            <%= form.submit %>
-<% end %>
-</pre>
-</p>
+    a.button:hover {
+      background-color: #111;
+    }
+
+    pre {
+      display: inline-block;
+      padding: 10px;
+      border: 1px solid #333;
+      background-color: #f2f2f2;
+    }
+
+    .centered-form {
+      text-align: center;
+    }
+
+    .form-container {
+      display: inline-block;
+      border: 1px solid #333;
+      padding: 20px;
+      background-color: #fff;
+      text-align: left;
+      margin-top: 10px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input[type="text"], select {
+      width: 300px;
+      padding: 5px;
+      margin-bottom: 10px;
+    }
+
+    input[type="submit"] {
+      background-color: #333;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      text-align: center;
+      
+    }
+
+    input[type="submit"]:hover {
+      background-color: #111;
+    }
+  </style>
+</head>
+<body>
+
+<p id="notice"><%= notice %></p>
+
+<h3>UPDATE DETAILS</h3>
+
+
+<div class="centered-form">
+  <div class="form-container">
+    <%= form_with model: [@user, @member] do |form| %>
+      <label>Name:</label>
+      <%= form.text_field :name, placeholder: "Name" %><br>
+
+      <label>Email:</label>
+      <%= form.text_field :email, placeholder: "Email" %><br>
+
+      <label>Phone Number:</label>
+      <%= form.text_field :contact_number, placeholder: "Contact Number" %><br>
+
+      <label>Address:</label>
+      <%= form.text_field :address, placeholder: "Address" %><br>
+
+      <label>Date Of Birth:</label>
+      <%= form.text_field :date_of_birth, placeholder: "DOB" %><br>
+
+      <label>Gender:</label>
+      <%= form.select :gender, ["Male", "Female", "Other"] %><br>
+
+      <%= form.submit "Update" %>
+    <% end %>
+  </div>
+</div>
+
+</body>
+</html>

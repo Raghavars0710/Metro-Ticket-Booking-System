@@ -7,19 +7,25 @@
             font-family: Arial, sans-serif;
             line-height: 1.6;
             margin: 0;
-            display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
+            background-color: #f2f2f2;
         }
 
         .container {
-            text-align: center;
+            text-align: left; /* Align labels to the left */
             margin: 20px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         h2 {
+            text-align: center;
             margin: 0;
+            color: #007bff;
         }
 
         #notice {
@@ -29,21 +35,28 @@
 
         h4 {
             margin-bottom: 20px;
+            color: #555;
+            text-align: center;
         }
 
         h4 a {
             text-decoration: none;
-            color: #007bff;
+            color: black;
             margin-right: 20px;
+            margin-bottom: 20px;            
         }
 
         h4 a:last-child {
             margin-right: 0;
         }
 
+
+
         p {
+            text-align: center;
             margin: 0;
             padding: 5px 0;
+            color: #333;
         }
 
         p strong {
@@ -56,10 +69,6 @@
         <h2>Member Details</h2>
         <p id="notice"><%= notice %></p>
 
-        <h4>
-            <%= link_to 'Edit Member Details', edit_user_member_path(@user) %>
-            <%= link_to 'Members Home Page', user_members_path %>
-        </h4>
 
         <p><strong>Name:</strong> <%= @member.name %></p>
         <p><strong>Email:</strong> <%= @member.email %></p>

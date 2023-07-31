@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Log in</title>
+  <style>
+    body {
+      /* display: flex; */
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .form-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .field {
+      margin-bottom: 10px;
+    }
+
+    /* Increase the size of the input fields */
+    .large-input {
+      width: 300px;
+      padding: 10px;
+      font-size: 16px;
+    }
+
+    .actions {
+      text-align: center;
+    }
+
+    /* Style for the "Remember me" checkbox */
+    .remember-me {
+      display: flex;
+      align-items: center;
+    }
+
+    .remember-me-label {
+      margin-left: 5px;
+    }
+
+    /* Style for the links */
+    .links {
+      margin-top: 20px;
+    }
+
+    .links a {
+      color: #008CBA;
+      text-decoration: none;
+    }
+
+    .links a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-container">
+    <h2>Log in</h2>
+
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="field">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "large-input" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password %><br />
+        <%= f.password_field :password, autocomplete: "current-password", class: "large-input" %>
+      </div>
+
+      <% if devise_mapping.rememberable? %>
+        <div class="field remember-me">
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me, class: "remember-me-label" %>
+        </div>
+      <% end %>
+
+      <div class="actions">
+        <%= f.submit "Log in" %>
+      </div>
+    <% end %>
+
+    <div class="links">
+      <%= render "devise/shared/links" %>
+    </div>
+  </div>
+
+</body>
+</html>

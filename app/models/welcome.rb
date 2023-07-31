@@ -1,14 +1,14 @@
-class Welcome < ApplicationRecord
+# class Welcome < ApplicationRecord
 
-  enum role: {Employee: 0, Passenger: 1, Admin: 2}
+#   enum role: {Employee: 0, Passenger: 1, Admin: 2}
 
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,:recoverable, :rememberable, :validatable, :confirmable
+#   # Include default devise modules. Others available are:
+#   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+#   devise :database_authenticatable, :registerable,:recoverable, :rememberable, :validatable, :confirmable
 
-  # has_one :user
+#   # has_one :user
 
-end
+# end
 
 
 

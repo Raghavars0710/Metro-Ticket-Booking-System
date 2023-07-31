@@ -78,8 +78,8 @@ Rails.application.configure do
     :address => 'smtp.mailtrap.io',
     :port => 587,
     :domain => 'localhost',
-    :user_name => 'd8fafdc9c08eb8',
-    :password => '06f2ff3178d990',
+    :user_name => '32c217b9268a17',
+    :password => '141c7ff038e7f8',
     :authentication => :cram_md5,
     :enable_starttls_auto => true
   }

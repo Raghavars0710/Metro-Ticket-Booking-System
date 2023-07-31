@@ -5,6 +5,7 @@ class CreateTrains < ActiveRecord::Migration[7.0]
       t.integer :train_number
       t.string :source
       t.string :destination
+      t.integer :metro_service_id
 
       t.timestamps
     end

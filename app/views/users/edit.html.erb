@@ -1,13 +1,12 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Update User Details</title>
-    <style>
-        body {
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Update User Details</title>
+        <style>
+              body {
             font-family: Arial, sans-serif;
             line-height: 1.6;
             margin: 0;
-            display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
@@ -19,85 +18,76 @@
             border: 1px solid #ccc;
             border-radius: 5px;
             max-width: 400px; /* Optional, set the maximum width of the form */
+            margin: 0 auto; /* Horizontally center the form */
         }
 
-        label {
-            display: block;
-            margin-bottom: 5px;
-        }
+            label {
+                display: block;
+                margin-bottom: 5px;
+            }
 
-        input[type="text"],
-        select {
-            padding: 5px;
-            width: 100%;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            margin-bottom: 10px;
-        }
+            input[type="text"],
+            select {
+                padding: 5px;
+                width: 100%;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                margin-bottom: 10px;
+            }
 
-        input[type="submit"] {
-            background-color: #007bff;
-            color: #fff;
-            padding: 8px 15px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            width: 100%;
-        }
+            input[type="submit"] {
+                background-color: #007bff;
+                color: #fff;
+                padding: 8px 15px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                width: 100%;
+            }
 
-        .link-container {
-            text-align: center;
-            margin-top: 20px;
-        }
+            .link-container {
+                text-align: center;
+                margin-top: 20px;
+            }
 
-        .link-container a {
-            text-decoration: none;
-            color: #007bff;
-            margin-right: 20px;
-        }
-    </style>
-</head>
-<body>
-    <div class="form-container">
-    <p id="notice"><%= notice %></p>
-    <h3>Edit Profile</h3>
-    <%= form_for @user do |f| %>
-        <%= f.hidden_field :authenticity_token, value: form_authenticity_token %>
+            .link-container a {
+                text-decoration: none;
+                color: #007bff;
+                margin-right: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="form-container">
+        <p id="notice"><%= notice %></p>
+        <h3>Edit Profile</h3>
+        <%= form_for @user do |f| %>
+            <%= f.hidden_field :authenticity_token, value: form_authenticity_token %>
 
-        <label for="user_name">Name:</label>
-        <%= f.text_field :name, placeholder: "Name" %>
-        <br>
+            <label for="user_name">Name:</label>
+            <%= f.text_field :name, placeholder: "Name" %>
+            <br>
 
-        <label for="user_email">Email:</label>
-        <%= f.text_field :email, placeholder: "Email" %>
-        <br>
+            <label for="user_contact_number">Phone Number:</label>
+            <%= f.text_field :contact_number, placeholder: "Contact Number" %>
+            <br>
 
-        <label for="user_contact_number">Phone Number:</label>
-        <%= f.text_field :contact_number, placeholder: "Contact Number" %>
-        <br>
+            <label for="user_address">Address:</label>
+            <%= f.text_field :address, placeholder: "Address" %>
+            <br>
 
-        <label for="user_address">Address:</label>
-        <%= f.text_field :address, placeholder: "Address" %>
-        <br>
+            <label for="user_date_of_birth">DOB:</label>
+            <%= f.text_field :date_of_birth, placeholder: "Date Of Birth" %>
+            <br>
 
-        <label for="user_date_of_birth">DOB:</label>
-        <%= f.text_field :date_of_birth, placeholder: "Date Of Birth" %>
-        <br>
+            <label for="user_gender">Gender:</label>
+            <%= f.select :gender, ["Male", "Female", "Other"] %>
+            <br>
 
-        <label for="user_gender">Gender:</label>
-        <%= f.select :gender, ["Male", "Female", "Other"] %>
-        <br>
+            <%= f.submit "Save" %>
+        <% end %>
 
-        <%= f.submit "Save" %>
-    <% end %>
+    </div>
 
-  <div class="link-container">
-    <p>
-      <%= link_to 'Add Member', new_user_member_path(@user) %>
-      <%= link_to 'Home Page', user_path %>
-    </p>
-  </div>
-</div>
-
-</body>
-</html>
+    </body>
+    </html>

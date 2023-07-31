@@ -1,53 +1,54 @@
 class MetroServicesController < ApplicationController
-  before_action :current_metro_service, only: [:create,:new] # Add filter before action for perticuler actions
-  before_action :current_user_metro_services, only:[:show]
-
+ 
+def index
+  @metro_s = MetroService.all
+end
   def new
-    if @user 
-      @metro_s = @user.metro_services.new
-    end
+      @metro_s = MetroService.new
   end
 
   def create
-    if @user
-      @metro_s = @user.metro_services.new(metro_service_params)
+      @metro_s = MetroService.new(metro_service_params)
       if @metro_s.save
-        @trains = Train.where(source: @metro_s.source, destination: @metro_s.destination)
-        redirect_to trains_path(trains: @trains.pluck(:id))
+        # @trains = Train.where(source: @metro_s.source, destination: @metro_s.destination)
+        redirect_to root_path
       else
         render :new, notice: "Fill all field properly"
       end
-    end
   end
 
   def edit
+    @metro_s = MetroService.find(params[:id])
   end
 
   def update
-   #  if @metro_service.update(metro_service_params)
-   #    redirect_to metro_services_path(@metro_service), notice: "successfully Updated."
-   #  else
-   #    render :edit
-   # end
+    @metro_s = MetroService.find(params[:id])
+    if @metro_s.update(metro_service_params)
+      flash[:alert] = "Route updated"
+      redirect_to root_path
+    else
+      render "edit"
+    end
   end
 
   def show
-    @metro_s = @user.metro_services.find(params[:id])
+    @metro_s = MetroService.find(params[:id])
   end
 
+  def destroy
+    @metro_s = MetroService.find(params[:id])
+    @metro_s.destroy
+    flash[:alert] = "Route deleted"
+    redirect_to request.referrer
+  end
 
   private
-
-  def current_user_metro_services
-    @user = User.find(params[:user_id])
-  end
-
-  def current_metro_service
-    @user = User.find(params[:user_id])
-    # @metro_s = @user.metro_services.find(params[:id])
-  end
-
+  
   def metro_service_params
     params.require(:metro_service).permit(:source, :destination)
   end
+
 end
+
+
+

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Edit <%= resource_name.to_s.humanize %></title>
+  <style>
+    body {
+      /* display: flex; */
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .form-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .field {
+      margin-bottom: 10px;
+    }
+
+    /* Increase the size of the input fields */
+    .large-input {
+      width: 300px;
+      padding: 10px;
+      font-size: 16px;
+    }
+
+    .actions {
+      text-align: center;
+    }
+
+    /* Style for the "Cancel my account" section */
+    h3 {
+      margin-top: 20px;
+    }
+
+    .cancel-account-button {
+      background-color: #f44336;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      text-decoration: none;
+    }
+
+    .cancel-account-button:hover {
+      background-color: #d32f2f;
+    }
+
+    /* Style for the "Back" link */
+    .back-link {
+      display: block;
+      margin-top: 20px;
+      text-align: center;
+      color: #008CBA;
+      text-decoration: none;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-container">
+    <h2>Edit <%= resource_name.to_s.humanize %></h2>
+
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+
+      <!-- Fields... -->
+
+      <div class="field">
+        <%= f.label :name %><br />
+        <%= f.text_field :name, autocomplete: "name", class: "large-input" %>
+      </div>
+
+      <!-- Other fields... -->
+
+      <div class="actions">
+        <%= f.submit "Update" %>
+      </div>
+    <% end %>
+
+    <h3>Cancel my account</h3>
+
+    <div>
+      Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class: "cancel-account-button" %>
+    </div>
+
+    <%= link_to "Back", :back, class: "back-link" %>
+  </div>
+
+</body>
+</html>

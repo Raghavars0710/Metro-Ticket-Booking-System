@@ -1,10 +1,8 @@
 class TrainsController < ApplicationController
-    before_action :current_user, only: [:show, :edit, :update, :destroy] # Add filter before action for perticuler actions
 
     def index
-      if params[:trains].present?
-        @trains = Train.where(id: params[:trains])
-      end
+      @metro_service = MetroService.find_by(id: params[:metro_service_id])
+      @trains = @metro_service.trains.all
     end
   
     def new
@@ -12,32 +10,41 @@ class TrainsController < ApplicationController
     end
   
     def show
+      @metro_service = MetroService.find(params[:id])
+      @trains = @metro_service.trains.all
     end
   
+    def all_trains
+      @trains = Train.all
+    end
+
     def edit
+      @train = Train.find(params[:id])
     end
   
     def create
-      @train = @metro_service.trains.new(train_params)  #create prticular metro service trains
+      @train = Train.new(train_params)  #create prticular metro service trains
   
       if @train.save! 
-        redirect_to train_path(@train), notice: "Train was successfuly created."
+        redirect_to root_path, notice: "Train was successfuly created."
       else
         render :new, notice: "Fill all field properly"
       end
     end
   
     def update
-     if @train.update(train_params)     
-      redirect_to train_path, notice: "Train was successfully Updated."
+      @train = Train.find(params[:id])
+     if @train.update!(train_params)     
+      redirect_to trains_all_trains_path, notice: "Train was successfully Updated."
      else
       render :edit
      end
     end
   
     def destroy
+      @train = Train.find(params[:id])
       @train.destroy
-      redirect_to trains_path, notice: "Train was successfully deleted."
+      redirect_to  request.referrer, notice: "Train was successfully deleted."
     end
   
   
@@ -48,7 +55,7 @@ class TrainsController < ApplicationController
     end
   
     def train_params
-      params.require(:train).permit(:name, :train_number, :source, :destination)
+      params.require(:train).permit(:name, :train_number, :source, :destination, :metro_service_id)
     end
     
 end

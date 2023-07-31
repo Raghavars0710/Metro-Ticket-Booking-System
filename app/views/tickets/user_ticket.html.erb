@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Your Page Title</title>
+  <!-- Include Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    /* Additional styles for the card and table */
+    .card {
+      margin: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-body {
+      padding: 20px;
+    }
+
+    .table {
+      margin-top: 20px;
+    }
+
+    .table th, .table td {
+      text-align: center;
+    }
+    li a:hover {
+      background-color: yellow;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card text-center">
+    <div class="card-body">
+      <h3>Total Tickets - <%= @tickets.count %> </h3>
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th>Book Date</th>
+              <th>Price</th>
+              <th>Train Id</th>
+            </tr> 
+          </thead>
+          <tbody>
+            <% @tickets.each do |ticket| %>
+              <tr>
+                <td><%= ticket.book_date %></td>
+                <td><%= ticket.price %></td>
+                <td><%= ticket.train_id %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

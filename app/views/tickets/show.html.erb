@@ -64,15 +64,17 @@
     .print_ticket-btn {
       text-align: center;
     }
+    li a:hover {
+      background-color: yellow;
+    }
   </style>
 </head>
 <body>
   <div class="container">
     <div class="logout-btn">
       <div class="book_page-btn">
-        <%= link_to "Book Page", new_train_ticket_path(@train) %>
+        <%#= link_to "Book Page", new_train_ticket_path(@train) %>
       </div>
-      <%= button_to("Log Out", destroy_welcome_session_path, method: :delete) %>
     </div>
 
     <h1>Ticket Details</h1>

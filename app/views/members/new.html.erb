@@ -1,51 +1,131 @@
-<div style="text-align: center;">
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Your Page Title</title>
+  <style>
+    /* Styles for the body and navigation */
+    body {
+      /* display: flex; */
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    ul.navigation {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: flex-start;
+      background-color: #333;
+    }
+
+    ul.navigation li {
+      padding: 10px;
+    }
+
+    ul.navigation li a {
+      color: white;
+      text-decoration: none;
+    }
+
+    ul.navigation li a:hover {
+      background-color: #555;
+    }
+
+    /* Styles for the "Add Member" section */
+    div.centered-container {
+      text-align: center; /* Align the "Add Member" section to the left */
+      margin: 20px;
+    }
+
+    div.centered-container label {
+      font-weight: bold;
+    }
+
+    div.centered-container input[type="text"],
+    div.centered-container select {
+      margin-left: 10px;
+      width: 200px; /* Set the width of input fields for consistency */
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    div.centered-container input[type="submit"],
+    div.centered-container a {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      text-decoration: none;
+      margin-left: 10px;
+    }
+
+    div.centered-container a {
+      background-color: #008CBA;
+    }
+    li a:hover {
+      background-color: yellow;
+    }
+  </style>
+</head>
+<body>
+
+  <h1 style="text-align: center;">Add Member</h1>
+
   <p id="notice" style="color: red;"><%= notice %></p>
-</div>
 
-<div style="text-align: center;">
-  <h3 style="font-family: Arial;">Add Member</h3>
-</div>
+  <table border="2" color="white">
+  </table>
 
-<div style="text-align: center;">
-  <%= form_with model: [@user, @member] do |form| %>
-    <div style="margin: 10px;">
-      <label style="font-weight: bold;">Name:</label>
-      <%= form.text_field :name, placeholder: "Name", style: "margin-left: 10px;" %>
-    </div>
+  <div class="centered-container">
+    <%= form_with model: [@user, @member] do |form| %>
+      <div style="margin: 10px;">
+        <label for="name">Name:</label>
+        <%= form.text_field :name, id: "name", placeholder: "Name" %>
+      </div>
 
-    <div style="margin: 10px;">
-      <label style="font-weight: bold;">Email:</label>
-      <%= form.text_field :email, placeholder: "Email", style: "margin-left: 10px;" %>
-    </div>
+      <div style="margin: 10px;">
+        <label for="email">Email:</label>
+        <%= form.text_field :email, id: "email", placeholder: "Email" %>
+      </div>
 
-    <div style="margin: 10px;">
-      <label style="font-weight: bold;">Phone Number:</label>
-      <%= form.text_field :contact_number, placeholder: "Contact Number", style: "margin-left: 10px;" %>
-    </div>
+      <div style="margin: 10px;">
+        <label for="contact_number">Phone Number:</label>
+        <%= form.text_field :contact_number, id: "contact_number", placeholder: "Contact Number" %>
+      </div>
 
-    <div style="margin: 10px;">
-      <label style="font-weight: bold;">Address:</label>
-      <%= form.text_field :address, placeholder: "Address", style: "margin-left: 10px;" %>
-    </div>
+      <div style="margin: 10px;">
+        <label for="address">Address:</label>
+        <%= form.text_field :address, id: "address", placeholder: "Address" %>
+      </div>
 
-    <div style="margin: 10px;">
-      <label style="font-weight: bold;">DOB:</label>
-      <%= form.text_field :date_of_birth, placeholder: "Date Of Birth", style: "margin-left: 10px;" %>
-    </div>
+      <div style="margin: 10px;">
+        <label for="date_of_birth">DOB:</label>
+        <%= form.text_field :date_of_birth, id: "date_of_birth", placeholder: "Date Of Birth" %>
+      </div>
 
-    <div style="margin: 10px;">
-      <label style="font-weight: bold;">Gender:</label>
-      <%= form.select :gender, ["Male", "Female", "Other"], style: "margin-left: 10px;" %>
-    </div>
+      <div style="margin: 10px;">
+        <label for="gender">Gender:</label>
+        <%= form.select :gender, ["Male", "Female", "Other"], id: "gender" %>
+      </div>
 
-    <div style="margin: 10px;">
-      <label style="font-weight: bold;">Role:</label>
-      <%= form.select :role, ["Employee", "Passenger", "Admin"], style: "margin-left: 10px;" %>
-    </div>
+      <div style="margin: 10px;">
+        <label for="role">Role:</label>
+        <%= form.select :role, ["Passenger"], id: "role" %>
+      </div>
 
-    <div style="text-align: center; margin: 20px;">
-      <%= form.submit style: "background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px;" %>
-      <%= link_to 'Members Home Page', user_members_path, style: "background-color: #008CBA; color: white; padding: 10px 20px; text-decoration: none; border-radius: 4px; font-size: 16px; margin-left: 10px;" %>
-    </div>
-  <% end %>
-</div>
+      <div style="text-align: center; margin: 20px;">
+        <%= form.submit "Add Member" %>
+      </div>
+    <% end %>
+  </div>
+
+</body>
+</html>

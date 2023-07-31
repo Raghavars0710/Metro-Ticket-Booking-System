@@ -2,13 +2,17 @@ require 'mailtrap'
 
 class UsersController < ApplicationController
   
-  before_action :current_user, only: [:show, :edit, :update, :destroy]  # Add filter before action for perticuler actions
+  before_action :current_user, only: [:show, :edit, :update, :destroy]  
+  
 
 
   def index
-    @users = User.all  # Select All user from user model
+    @users = User.all 
   end
 
+  def all_users
+    @users = User.all 
+  end
   def new
     @user = User.new  
   end
@@ -16,29 +20,33 @@ class UsersController < ApplicationController
   def show
   end
 
+  def home
+  end
+
   def edit
   end
 
   def create
-    @user = User.new(user_params)  # create new user for perticuler perams by using user_params private method 
-     @user.role = current_welcome.role
-    if @user.save!  # if user is save then show @user by using show user_path route 
-      UserMailer.welcome_email(@user).deliver_now  # Send the welcome email
+    @user = User.new(user_params) 
+    #  @user.role = current_user.role
+    if @user.save! 
+      UserMailer.user_email(@user).deliver_now  
       redirect_to user_path(@user), notice: "User was successfuly created."
     else 
-      render :new, notice: "Fill all field properly"   # Code for handling failed user creation
+      render :new, notice: "Fill all field properly"   
     end
   end
 
   def update
-   if @user.update(user_params)  #update user data by using  update method to permit by user_perams private method
-    redirect_to user_path, notice: "user was successfully Updated."
+   if @user.update(user_params) 
+     redirect_to user_path, notice: "user was successfully Updated."
    else
-    render :edit
+     render :edit
    end
   end
 
   def destroy
+    @user = User.find_by(id: params[:id])
     @user.destroy
     redirect_to users_path, notice: "user was successfully deleted."
   end
@@ -53,7 +61,5 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:id,:name, :email, :contact_number, :address, :gender, :role, :date_of_birth)
   end
-
-
 end
 

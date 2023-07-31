@@ -1,8 +1,7 @@
 class Train < ApplicationRecord
-    # belongs_to :metro_service
+    belongs_to :metro_service
 
-    has_many :tickets, dependent: :destroy
-    has_many :users, through: :tickets, dependent: :destroy
+    has_many :tickets
 
     # default_scope -> { order(created_at: :asc) }
 end

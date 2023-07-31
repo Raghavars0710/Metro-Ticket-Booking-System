@@ -1,19 +1,100 @@
-<h1>Tickets#new</h1>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book Ticket</title>
+    <style>
+        html, body {
+            height: 100%;
+        }
 
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f8f8f8;
+        }
 
-<p><%= button_to( "Log Out", destroy_welcome_session_path, method: :delete ) %></p>
+        .form-container {
+            text-align: center;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            max-width: 400px; 
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+        }
 
+        h3 {
+            color: #007bff; 
+            margin-bottom: 20px; 
+        }
 
-<pre><h3>          Book ticket</h3></pre>
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
 
-<p><pre><%= form_with model: [@train, @ticket] do |form| %>
-From:-               <%= form.text_field :source,value: @train.source %><br>
-To:-                 <%= form.text_field :destination,value: @train.destination %><br>
-book_date:-          <%= form.text_field :book_date,value: Time.now %><br>
-Train Name :-        <%= form.text_field :name,value: @train.name %><br>
-Train Number :-      <%= form.text_field :train_number,value: @train.train_number %><br>
-User Id :-           <%= form.text_field :user_id,value: @user%><br>
-<pre><%= form.submit %>                        <%#= link_to 'See All tickets', train_tickets_path %></pre>
-<% end %>
-</pre>
-</p>
+        input[type="text"] {
+            padding: 10px;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+        .form-wrapper {
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        li a:hover {
+      background-color: yellow;
+    }
+
+    </style>
+</head>
+<body>
+    <div class="form-wrapper">
+    <div class="form-container">
+        <h3>Book Ticket</h3>
+
+        <%= form_with model: [@train, @ticket] do |form| %>
+            <label for="train_source">From:</label>
+            <%= form.text_field :source, value: @train.source, readonly: true %>
+
+            <label for="train_destination">To:</label>
+            <%= form.text_field :destination, value: @train.destination, readonly: true %>
+
+            <label for="ticket_book_date">Book Date:</label>
+            <%= form.text_field :book_date, value: Time.now, readonly: true %>
+
+            <label for="train_name">Train Name:</label>
+            <%= form.text_field :name, value: @train.name, readonly: true %>
+
+            <label for="train_train_number">Train Number:</label>
+            <%= form.text_field :train_number, value: @train.train_number, readonly: true %>
+
+            <label for="ticket_user_id">User Id:</label>
+            <%= form.text_field :user_id, value: @user, readonly: true %>
+
+            <%= form.submit %>
+        <% end %>
+    </div>
+    </div>
+</body>
+</html>

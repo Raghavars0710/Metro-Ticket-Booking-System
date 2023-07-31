@@ -9,8 +9,7 @@
     border-collapse: collapse;
   }
 
-  th,
-  td {
+  th, td {
     padding: 10px;
     text-align: left;
     border-bottom: 1px solid #ddd;
@@ -22,7 +21,7 @@
 
   .btn-group {
     display: flex;
-    gap: 10px;
+    justify-content: space-between;
   }
 
   .btn {
@@ -65,14 +64,10 @@
       <% if current_user.role == "Admin" %>
       <td>
         <div class="btn-group">
-          <%= link_to('Update Train', edit_train_path(train), class: "btn btn-primary") %>
-          <%= link_to 'View Tickets', train_tickets_path(train.id), class: "btn btn-primary" %>
-          <%= button_to("Delete Train", train_path(train), method: :delete, class: "btn btn-danger") %>
+          <%= link_to('Update Train', edit_train_path(train.id), class: "btn btn-primary") %>&nbsp;&nbsp;
+          <%= link_to('View Tickets', train_tickets_path(train.id), class: "btn btn-primary") %>&nbsp;&nbsp;
+          <%= button_to("Delete Train", train_path(train.id), method: :delete, class: "btn btn-danger") %>
         </div>
-      </td>
-      <% else %>
-      <td>
-        <%= link_to 'Book Ticket', new_train_ticket_path(train), class: "btn btn-primary" %>
       </td>
       <% end %>
     </tr>

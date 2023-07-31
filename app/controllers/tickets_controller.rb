@@ -10,12 +10,20 @@ class TicketsController < ApplicationController
     end
   end
 
+  def user_ticket
+    # @user = User.find(params[:user_id])
+   @tickets = Ticket.where(user_id: current_user.id)  
+  end
+
+  def all_tickets
+    @tickets = Ticket.all
+  end
   def new
     @train = Train.find(params[:train_id])
     if @train 
       @ticket = @train.tickets.new
     end
-    @user = MetroService.last.user.id
+    @user = current_user.id
   end
 
   def create
@@ -23,7 +31,7 @@ class TicketsController < ApplicationController
     if @train 
       @ticket = @train.tickets.new(ticket_params)
       @ticket.price = calculate_price(@train.source, @train.destination) #for set price by defult
-      @user = MetroService.last.user.id
+      @user = current_user.id
       if @ticket.save!
         TicketConfirmationMailer.ticket_confirmation_email(@train,@ticket).deliver_now
         redirect_to train_ticket_path(@train,@ticket)  #redirect to ticket show path

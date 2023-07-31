@@ -20,7 +20,7 @@ class MembersController < ApplicationController
   end
 
   def show
-    @member = @user.members.find(params[:id])
+    @member = @user.members.find_by(id: params[:id])
   end
 
   def edit
@@ -45,6 +45,7 @@ class MembersController < ApplicationController
   end
 
   def destroy
+    @member = @user.members.find_by(id: params[:id])
     @member.destroy
     redirect_to user_member_path, notice: "Member was successfully deleted."
   end
@@ -58,7 +59,7 @@ class MembersController < ApplicationController
 
   def current_member
     @user = User.find(params[:user_id])
-    @member = @user.members.find(params[:id])
+    @member = @user.members.find_by(id: params[:id])
   end
   
   def member_params

@@ -1,0 +1,16 @@
+<div class="container my-3">
+  <%= form_with model: @train, local: true do |f| %>
+  <%= f.label :name,"Enter Metro Name" %>
+    <%= f.text_field :name, class: 'form-control', required: true %><br>
+    <%= f.label :train_number,"Enter  Metro Number" %>
+    <%= f.text_field :train_number, class: 'form-control', required: true %><br>
+    <%= f.label :source,"Enter Starting City" %>
+    <%= f.text_field :source, class: 'form-control', required: true %><br>
+    <%= f.label :destination, "Enter Destination City" %>
+    <%= f.text_field :destination, class: 'form-control', required: true %><br>
+    <%= f.label :metro_service_id, "Enter Route id" %>
+    <%= f.text_field :metro_service_id, class: 'form-control', required: true %><br>
+    <%= f.submit "Save Trains", class: "btn btn-primary" %>
+      <%= link_to "Back", :back ,class:"btn btn-primary"%>
+  <% end %>
+</div>

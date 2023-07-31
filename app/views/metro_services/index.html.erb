@@ -1,0 +1,78 @@
+<style>
+  h1 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+
+  th {
+    background-color: #f2f2f2;
+  }
+
+  .btn-group {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+  }
+
+  .btn {
+    padding: 6px 12px; /* Adjust the padding as needed */
+    border-radius: 4px;
+    font-size: 12px; /* Adjust the font size as needed */
+    cursor: pointer;
+  }
+
+  .btn-primary {
+    background-color: #007bff;
+    color: #fff;
+  }
+
+  .btn-danger {
+    background-color: #dc3545;
+    color: #fff;
+  }
+</style>
+
+<h1>All Routes</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Source</th>
+      <th>Destination</th>
+      <th>Options</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @metro_s&.each do |metro| %>
+    <tr>
+      <td><%= metro.source %></td>
+      <td><%= metro.destination %></td>
+      
+      <% if current_user&.role == "Admin" %>
+      <td>
+        <div class="btn-group" role="group">
+          <%= link_to('Update Route', edit_metro_service_path(metro.id), class: "btn btn-primary") %>
+          <%= link_to('View Trains', metro_service_trains_path(metro.id), class: "btn btn-primary") %>
+          <%= button_to("Delete Route", metro_service_path(metro.id), method: :delete, class: "btn btn-danger") %>
+        </div>
+      </td>
+      <% else %>
+      <td>
+        <%= link_to 'View Trains', metro_service_trains_path(metro.id), class: "btn btn-primary" %>
+      </td> 
+      <% end %>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

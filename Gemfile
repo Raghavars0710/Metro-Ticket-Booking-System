@@ -46,6 +46,7 @@ gem "bootsnap", require: false
 # gem "sassc-rails"
 
 gem 'devise'
+gem 'bcrypt-ruby'
 
 gem 'byebug'
 
@@ -74,3 +75,6 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+gem 'cancancan'
+gem "cssbundling-rails", "~> 1.2"
