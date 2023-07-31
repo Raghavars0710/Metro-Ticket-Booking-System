@@ -4,7 +4,6 @@
   <title>Your Page Title</title>
   <style>
     body {
-      /* display: flex; */
       justify-content: center;
       align-items: center;
       height: 100vh;
@@ -13,7 +12,7 @@
     }
 
     table {
-      width: 80%; /* Adjust the width as needed */
+      width: 80%; 
       margin: 20px auto;
       border-collapse: collapse;
     }
@@ -31,7 +30,7 @@
 
     h1 {
       text-align: center;
-      color: #333;
+      color: #007bff;
     }
 
     p {
@@ -66,38 +65,38 @@
 </head>
 <body>
 
-<h1> Profile</h1>
+  <h1>Profile</h1>
 
-<table border="1" cellspacing="0">
-  <tr>
-    <th>Name</th>
-    <td><%= @user.name %></td>
-  </tr>
-  <tr>
-    <th>Email</th>
-    <td><%= @user.email %></td>
-  </tr>
-  <tr>
-    <th>Phone Number</th>
-    <td><%= @user.contact_number %></td>
-  </tr>
-  <tr>
-    <th>Address</th>
-    <td><%= @user.address %></td>
-  </tr>
-  <tr>
-    <th>DOB</th>
-    <td><%= @user.date_of_birth %></td>
-  </tr>
-  <tr>
-    <th>Gender</th>
-    <td><%= @user.gender %></td>
-  </tr>
-  <tr>
-    <th>Role</th>
-    <td><%= @user.role %></td>
-  </tr>
-</table>
+  <table border="1" cellspacing="0">
+    <tr>
+      <th>Name</th>
+      <td><%= @user.name %></td>
+    </tr>
+    <tr>
+      <th>Email</th>
+      <td><%= @user.email %></td>
+    </tr>
+    <tr>
+      <th>Phone Number</th>
+      <td><%= @user.contact_number %></td>
+    </tr>
+    <tr>
+      <th>Address</th>
+      <td><%= @user.address %></td>
+    </tr>
+    <tr>
+      <th>DOB</th>
+      <td><%= @user.date_of_birth %></td>
+    </tr>
+    <tr>
+      <th>Gender</th>
+      <td><%= @user.gender %></td>
+    </tr>
+    <tr>
+      <th>Role</th>
+      <td><%= @user.role %></td>
+    </tr>
+  </table>
 
 </body>
 </html>

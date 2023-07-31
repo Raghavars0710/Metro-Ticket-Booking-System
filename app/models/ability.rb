@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Ability
   include CanCan::Ability
 
@@ -7,15 +5,17 @@ class Ability
     user ||= User.new
 
     if user.role == "Admin"
-      can :manage, Member
+      can :read, Member
       can :manage, MetroService
       can :manage, Train
-      can :manage, Ticket
-      can :manage, User
+      can :read, Ticket
+      can :read, User
     else
       can :manage, Member
-      can :manage
+      can :manage, User
       can [:read, :create], Ticket
+      can :read, :metro_services
+      can :read, :trains
       can :read, :tickets
 
     end

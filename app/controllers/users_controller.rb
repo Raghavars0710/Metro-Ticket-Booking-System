@@ -4,8 +4,6 @@ class UsersController < ApplicationController
   
   before_action :current_user, only: [:show, :edit, :update, :destroy]  
   
-
-
   def index
     @users = User.all 
   end
@@ -28,7 +26,6 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params) 
-    #  @user.role = current_user.role
     if @user.save! 
       UserMailer.user_email(@user).deliver_now  
       redirect_to user_path(@user), notice: "User was successfuly created."
@@ -38,11 +35,11 @@ class UsersController < ApplicationController
   end
 
   def update
-   if @user.update(user_params) 
-     redirect_to user_path, notice: "user was successfully Updated."
-   else
-     render :edit
-   end
+    if @user.update(user_params) 
+      redirect_to user_path, notice: "user was successfully Updated."
+    else
+      render :edit
+    end
   end
 
   def destroy

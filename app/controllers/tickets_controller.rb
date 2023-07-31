@@ -1,8 +1,6 @@
 class TicketsController < ApplicationController
-  before_action :current_ticket, only: [:show, :edit, :update, :destroy] # Add filter before action for perticuler actions
+  before_action :current_ticket, only: [:show, :edit, :update, :destroy]
   before_action :current_train_tickets, only:[:index]  
-  # before_action :current_user_tickets , only: [:index,:new,:create]
-
 
   def index
     if @train 
@@ -11,13 +9,13 @@ class TicketsController < ApplicationController
   end
 
   def user_ticket
-    # @user = User.find(params[:user_id])
-   @tickets = Ticket.where(user_id: current_user.id)  
+    @tickets = Ticket.where(user_id: current_user.id)  
   end
 
   def all_tickets
     @tickets = Ticket.all
   end
+
   def new
     @train = Train.find(params[:train_id])
     if @train 
@@ -32,16 +30,17 @@ class TicketsController < ApplicationController
       @ticket = @train.tickets.new(ticket_params)
       @ticket.price = calculate_price(@train.source, @train.destination) #for set price by defult
       @user = current_user.id
+      @user_email = current_user.email
       if @ticket.save!
-        TicketConfirmationMailer.ticket_confirmation_email(@train,@ticket).deliver_now
-        redirect_to train_ticket_path(@train,@ticket)  #redirect to ticket show path
+        TicketConfirmationMailer.ticket_confirmation_email(@user_email,@train,@ticket).deliver_now
+        redirect_to train_ticket_path(@train,@ticket)  
       end
     end
   end
 
   def show
     if @train
-      @ticket = @train.tickets.find(params[:id]) #s find the train tickets id 
+      @ticket = @train.tickets.find(params[:id]) 
       @ticket.price = calculate_price(@train.source, @train.destination) # show set price by default
     end
   end
@@ -57,19 +56,13 @@ class TicketsController < ApplicationController
     redirect_to train_tickets_path, notice: "ticket was successfully deleted."
   end
 
-
   private
 
-  def current_train_tickets   #find Train id from Train model
+  def current_train_tickets  
     @train = Train.find(params[:train_id])
   end
 
-  def current_user_tickets   #find Train id from Train model
-    # @train = User.find(params[:user_id])
-  end
-
   def current_ticket
-    # @user = User.find(params[:user_id])
     @train = Train.find(params[:train_id])
     @ticket = @train.tickets.find(params[:id])
   end
@@ -77,7 +70,6 @@ class TicketsController < ApplicationController
   def ticket_params 
     params.require(:ticket).permit(:user_id,:train_id,:price, :book_date,:train_id)
   end
-
 
   def calculate_price(source, destination) #this method is create for set price default 
     case [source, destination]

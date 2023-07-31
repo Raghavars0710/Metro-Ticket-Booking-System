@@ -3,8 +3,8 @@
 <head>
   <title>Edit <%= resource_name.to_s.humanize %></title>
   <style>
+
     body {
-      /* display: flex; */
       justify-content: center;
       align-items: center;
       min-height: 100vh;
@@ -26,7 +26,6 @@
       margin-bottom: 10px;
     }
 
-    /* Increase the size of the input fields */
     .large-input {
       width: 300px;
       padding: 10px;
@@ -35,11 +34,6 @@
 
     .actions {
       text-align: center;
-    }
-
-    /* Style for the "Cancel my account" section */
-    h3 {
-      margin-top: 20px;
     }
 
     .cancel-account-button {
@@ -57,7 +51,6 @@
       background-color: #d32f2f;
     }
 
-    /* Style for the "Back" link */
     .back-link {
       display: block;
       margin-top: 20px;
@@ -69,38 +62,78 @@
     .back-link:hover {
       text-decoration: underline;
     }
+
+    h2 {
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: #007bff;
+    }
+
+    h3 {
+/*      margin-top: 40px;*/
+      font-size: 20px;
+    }
+
+    .cancel-account-button {
+      margin-top: 10px;
+    }
+
+    .form-container {
+      margin-bottom: 30px;
+    }
   </style>
 </head>
 <body>
 
-  <div class="form-container">
-    <h2>Edit <%= resource_name.to_s.humanize %></h2>
+   <div class="form-container">
+    <h2>Edit <%= resource_name.to_s.humanize %> Profile</h2>
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
 
-      <!-- Fields... -->
-
       <div class="field">
-        <%= f.label :name %><br />
-        <%= f.text_field :name, autocomplete: "name", class: "large-input" %>
+        <label for="user_name">Name:</label>
+        <%= f.text_field :name, autocomplete: "name" %>
       </div>
 
-      <!-- Other fields... -->
+      <div class="field">
+        <label for="user_contact_number">Phone Number:</label>
+        <%= f.text_field :contact_number, placeholder: "Contact Number" %>
+      </div>
+
+      <div class="field">
+        <label for="user_address">Address:</label>
+        <%= f.text_field :address, placeholder: "Address" %>
+      </div>
+
+      <div class="field">
+        <label for="user_gender">Gender:</label>
+        <%= f.select :gender, options_for_select(['male', 'female', 'other']), value: current_user.gender %>
+      </div>
+
+      <div class="field">
+        <label for="user_date_of_birth">DOB:</label>
+        <%= f.text_field :date_of_birth, placeholder: "Date Of Birth" %>
+      </div>
+
+      <div class="field">
+        <label for="user_current_password">Current Password:</label>
+        <%= f.password_field :current_password, autocomplete: "current-password" %>
+      </div>
 
       <div class="actions">
         <%= f.submit "Update" %>
       </div>
     <% end %>
 
+    <br><br>
     <h3>Cancel my account</h3>
 
     <div>
-      Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class: "cancel-account-button" %>
+      <%= button_to "Delete Account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class: "cancel-account-button" %>
     </div>
-
-    <%= link_to "Back", :back, class: "back-link" %>
   </div>
 
 </body>
 </html>
+

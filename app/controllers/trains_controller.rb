@@ -34,11 +34,11 @@ class TrainsController < ApplicationController
   
     def update
       @train = Train.find(params[:id])
-     if @train.update!(train_params)     
-      redirect_to trains_all_trains_path, notice: "Train was successfully Updated."
-     else
-      render :edit
-     end
+      if @train.update!(train_params)     
+        redirect_to trains_all_trains_path, notice: "Train was successfully Updated."
+      else
+        render :edit
+      end
     end
   
     def destroy
@@ -47,7 +47,7 @@ class TrainsController < ApplicationController
       redirect_to  request.referrer, notice: "Train was successfully deleted."
     end
   
-  
+
     private
   
     def current_train

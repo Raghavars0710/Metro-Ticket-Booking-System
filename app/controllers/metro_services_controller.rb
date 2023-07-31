@@ -1,16 +1,16 @@
 class MetroServicesController < ApplicationController
  
-def index
-  @metro_s = MetroService.all
-end
+  def index
+    @metro_s = MetroService.all
+  end
+
   def new
-      @metro_s = MetroService.new
+    @metro_s = MetroService.new
   end
 
   def create
       @metro_s = MetroService.new(metro_service_params)
       if @metro_s.save
-        # @trains = Train.where(source: @metro_s.source, destination: @metro_s.destination)
         redirect_to root_path
       else
         render :new, notice: "Fill all field properly"

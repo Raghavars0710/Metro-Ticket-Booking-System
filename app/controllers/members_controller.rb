@@ -20,7 +20,13 @@ class MembersController < ApplicationController
   end
 
   def show
-    @member = @user.members.find_by(id: params[:id])
+    @user = User.find(params[:user_id])
+    @member = Member.find_by(params[:id])
+  end
+
+  def show_member
+    show_member_id = params[:id].split('.').last.to_i
+    @member = Member.find(show_member_id)
   end
 
   def edit
@@ -28,7 +34,6 @@ class MembersController < ApplicationController
 
   def create
     @member = @user.members.new(member_params) 
-
     if @member.save!
       redirect_to user_member_path(@user,@member), notice: "Member was successfuly created."
     else
@@ -37,10 +42,10 @@ class MembersController < ApplicationController
   end
 
   def update
-   if @member.update(member_params)
-    redirect_to user_member_path, notice: "Member was successfully Updated."
-   else
-    render :edit
+    if @member.update(member_params)
+      redirect_to user_member_path, notice: "Member was successfully Updated."
+    else
+      render :edit
    end
   end
 

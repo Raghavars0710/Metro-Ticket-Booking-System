@@ -1,4 +1,3 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'raghavendra.sharma@preciousinfosystem.com'
-  # layout "mailer"
+  default from: 'metro.rail.service@gmail.com'
 end
