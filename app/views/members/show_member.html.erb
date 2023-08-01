@@ -73,6 +73,7 @@
         <p><strong>DOB:</strong> <%= @member.date_of_birth %></p>
         <p><strong>Gender:</strong> <%= @member.gender %></p>
         <p><strong>Role:</strong> <%= @member.role %></p>
+        <p><%= link_to 'Back', user_members_path(current_user.id),class:"btn btn-primary" %></p>
     </div>
 </body>
 </html>

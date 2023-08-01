@@ -35,7 +35,7 @@ class MembersController < ApplicationController
   def create
     @member = @user.members.new(member_params) 
     if @member.save!
-      redirect_to user_member_path(@user,@member), notice: "Member was successfuly created."
+      redirect_to user_members_path(current_user.id), notice: "Member was successfuly created."
     else
       render :new, notice: "Fill all field properly"
     end
@@ -43,7 +43,7 @@ class MembersController < ApplicationController
 
   def update
     if @member.update(member_params)
-      redirect_to user_member_path, notice: "Member was successfully Updated."
+      redirect_to user_members_path(current_user.id), notice: "Member was successfully Updated."
     else
       render :edit
    end
@@ -52,7 +52,7 @@ class MembersController < ApplicationController
   def destroy
     @member = @user.members.find_by(id: params[:id])
     @member.destroy
-    redirect_to user_member_path, notice: "Member was successfully deleted."
+    redirect_to user_members_path(current_user.id), notice: "Member was successfully deleted."
   end
 
 
