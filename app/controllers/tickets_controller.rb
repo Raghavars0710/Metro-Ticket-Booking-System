@@ -29,6 +29,7 @@ class TicketsController < ApplicationController
     if @train 
       @ticket = @train.tickets.new(ticket_params)
       @ticket.price = calculate_price(@train.source, @train.destination) #for set price by defult
+      # byebug
       @user = current_user.id
       @user_email = current_user.email
       if @ticket.save!
@@ -73,51 +74,38 @@ class TicketsController < ApplicationController
 
   def calculate_price(source, destination) #this method is create for set price default 
     case [source, destination]
-     when ["Airport_metro_station", "Super_corridor_metro"]
-       10
-     when ["Airport_metro_station", "Love_kush_metro"]
-       15
-     when ["Airport_metro_station", "MR_10_metro"]
-       20
-     when ["Airport_metro_station", "Sukhliya_metro"]
-       25
-     when ["Airport_metro_station", "Bapat_metro"]
-       30
-     when ["Airport_metro_station", "Vijay_nagar_metro"]
-       35
-     when ["Super_corridor_metro_station", "Love_kush_metro"]
-       10
-     when ["Super_corridor_metro_station", "MR_10_metro"]
-       15
-     when ["Super_corridor_metro_station", "Sukhliya_metro"]
-       20
-     when ["Super_corridor_metro_station", "Bapat_metro"]
-       25
-     when ["Super_corridor_metro_station", "Vijay_nagar_metro"]
-       30            
-     when ["Love_kush_metro_station", "MR_10_metro"]
-       10
-     when ["Love_kush_metro_station", "Sukhliya_metro"]
-       15
-     when ["Love_kush_metro_station", "Bapat_metro"]
-       20
-     when ["Love_kush_metro_station", "Vijay_nagar_metro"]
-       25                    
-     when ["MR_10_metro_station", "Sukhliya_metro"]
-       10
-     when ["MR_10_metro_station", "Bapat_metro"]
-       15
-     when ["MR_10_metro_station", "Vijay_nagar_metro"]
-       20
-     when ["Sukhliya_metro_station", "Bapat_metro"]
-       10
-     when ["Sukhliya_metro_station", "Vijay_nagar_metro"]
-       15                    
-     when ["Bapat_metro_station", "Vijay_nagar_metro"]
-       15
-     else
-       0
+      when ["Airport Metro Station", "Super Corridor Metro Station"]
+        10
+      when ["Airport Metro Station", "Lav_kush Metro Station"]
+        15
+      when ["Airport Metro Station", "MR 10 Metro Station"]
+        20
+      when ["Airport Metro Station", "Sukhliya Metro Station"]
+        25
+      when ["Airport Metro Station", "Bapat Metro Station"]
+        30
+      when  ["Airport Metro Station", "Vijay Nagar Metro Station"]
+        35  
+      when ["Vijay Nagar Metro Station", "Airport Metro Station"]
+        35   
+      when ["Lav_kush Metro Station", "MR 10 Metro Station"]
+        10
+      when ["Lav_kush Metro Station", "Sukhliya Metro Station"]
+        15
+      when ["Lav_kush Metro Station", "Bapat Metro Station"]
+        20
+      when ["Vijay Nagar Metro Station", "Lav_kush Metro Station"]
+        25                    
+      when ["Vijay Nagar Metro Station", "MR 10 Metro Station"]
+        20
+      when  ["Vijay Nagar Metro Station", "Sukhliya Metro Station"]
+        15                    
+      when ["Vijay Nagar Metro Station", "Bapat Metro Station"]
+        15
+      else
+        0
     end
   end
 
 end
+
