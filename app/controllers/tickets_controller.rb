@@ -69,7 +69,7 @@ class TicketsController < ApplicationController
   end
 
   def ticket_params 
-    params.require(:ticket).permit(:user_id,:train_id,:price, :book_date,:train_id)
+    params.require(:ticket).permit(:user_id,:price, :book_date,:train_id)
   end
 
   def calculate_price(source, destination) #this method is create for set price default 

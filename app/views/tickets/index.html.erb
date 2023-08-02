@@ -8,9 +8,10 @@
   <div class="card-header">
     <h1>View <%= @train.name %> Bookings</h1>
   </div>
+  <%@total_price = 0%>
   <div class="card-body">
     <% if @train.tickets.present? %>
-      <h3>Total Tickets - <%= @train.tickets.count %> </h3>
+      <h3>Total Tickets </h3>
       <div class="table-responsive">
         <table border="2", class="table table-bordered table-striped">
           <thead>
@@ -21,7 +22,7 @@
                 <th>Train name</th>
                 <th>Book Date</th>
                 <th>Price</th>
-                <th colspan="1">Click Any Operations</th>
+                <th colspan="1">See Ticket</th>
             </tr> 
           </thead>
           <tbody>
@@ -33,19 +34,20 @@
                   <td><%= @train.name %></td>
                   <td><%= ticket.book_date %></td>
                   <td><%= ticket.price %></td>
-                  <td>
-                    <%= link_to 'Details', train_ticket_path(@train,ticket), class: "btn btn-info" %>                    
+                  <td><%= link_to 'Details', train_ticket_path(@train,ticket), class: "btn btn-info" %>                    
                   </td>
-                  <td>                    
-                    <%#= button_to( "Remove Ticket", train_ticket_path(@train,ticket), method: :delete) %>                    
-                  </td>
+                  <% @total_price += ticket.price %>
               </tr>
             <% end %>
           </tbody>
         </table>
+        <p><strong> Total Tickets = </strong> <%= @train.tickets.count %> </p>
+        <p><strong>Total Price = </strong> <%= @total_price %></p>
       </div>
     <% else %>
-      <p>You have no tickets.</p>
+      <h3> You have no Tickets.</h3>
+      <p><strong> Total Tickets = </strong> <%= @train.tickets.count %> </p>
+      <p><strong>Total Price = </strong> <%= @total_price %></p>
     <% end %>
   </div>
 </div>

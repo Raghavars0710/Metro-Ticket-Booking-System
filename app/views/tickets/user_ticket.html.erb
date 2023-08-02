@@ -1,64 +1,42 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Your Page Title</title>
-  <!-- Include Bootstrap CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <style>
-
-    .card {
-      margin: 20px;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    .card-body {
-      padding: 20px;
-    }
-
-    .table {
-      margin-top: 20px;
-    }
-
-    .table th, .table td {
-      text-align: center;
-    }
-    li a:hover {
-      background-color: yellow;
-    }
-    h3{
+<style>
+  h3{
       text-align: center;
       color: #007bff;
     }
-  </style>
-</head>
-<body>
-
-  <div class="card text-center">
-    <div class="card-body">
-      <h3>Total Tickets - <%= @tickets.count %> </h3>
+</style>
+<div class="card text-center">
+  <div class="card-body">
+    <% if @tickets.present? %>
+      <h3>All Tickets </h3>
       <div class="table-responsive">
-        <table class="table table-bordered table-striped">
+        <table border="2", class="table table-bordered table-striped">
           <thead>
             <tr>
-              <th>Book Date</th>
-              <th>Price</th>
-              <th>Train Id</th>
+                <th>Book Date</th>
+                <th>Price</th>
+                <th>Train Id</th>
+                <th colspan="1">Click Any Operations</th>
             </tr> 
           </thead>
-          <tbody>
+          <tbody>            
             <% @tickets.each do |ticket| %>
               <tr>
                 <td><%= ticket.book_date %></td>
                 <td><%= ticket.price %></td>
                 <td><%= ticket.train_id %></td>
+                <td>
+                  <%= link_to 'Ticket Details', train_ticket_path(ticket.train_id,ticket), class: "btn btn-info" %> 
+                </td>
               </tr>
             <% end %>
           </tbody>
         </table>
+        <p><strong> Total Tickets = </strong> <%= @tickets.count %> </p>
       </div>
-    </div>
+    <% else %>
+      <h3>Not One Booked Any Tickets</h3>
+      <p><strong> Total Tickets = </strong> <%= @tickets.count %> </p>
+    <% end %>
   </div>
+</div>
 
-</body>
-</html>
