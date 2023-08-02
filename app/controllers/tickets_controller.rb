@@ -1,4 +1,5 @@
 class TicketsController < ApplicationController
+  load_and_authorize_resource
   before_action :current_ticket, only: [:show, :edit, :update, :destroy]
   before_action :current_train_tickets, only:[:index]  
 
@@ -29,7 +30,6 @@ class TicketsController < ApplicationController
     if @train 
       @ticket = @train.tickets.new(ticket_params)
       @ticket.price = calculate_price(@train.source, @train.destination) #for set price by defult
-      # byebug
       @user = current_user.id
       @user_email = current_user.email
       if @ticket.save!
@@ -46,16 +46,15 @@ class TicketsController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit ; end
 
-  def update
-  end
+  def update ; end
 
   def destroy
     @ticket.destroy
     redirect_to train_tickets_path, notice: "ticket was successfully deleted."
   end
+
 
   private
 
@@ -106,6 +105,5 @@ class TicketsController < ApplicationController
         0
     end
   end
-
 end
 

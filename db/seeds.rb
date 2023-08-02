@@ -1,3 +1,33 @@
+# User.create(name: "Admin", contact_number: 986514723, address: "admin address", role: "Admin", date_of_birth: 11/07/1998, gender: "male")
+# User.create(name: "Raghav Sharma", contact_number: 8965068902, address: "", role: "Passenger", date_of_birth: 10/07/2000, gender: "male")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # MetroService.create(source:"Airport_metro_station",destination:"Super_corridor_metro")
 # MetroService.create(source:"Airport_metro_station",destination:"Love_kush_metro")

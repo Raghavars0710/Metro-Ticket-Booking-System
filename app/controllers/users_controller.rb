@@ -1,7 +1,7 @@
 require 'mailtrap'
 
 class UsersController < ApplicationController
-  
+  load_and_authorize_resource
   before_action :current_user, only: [:show, :edit, :update, :destroy]  
   
   def index
@@ -11,18 +11,14 @@ class UsersController < ApplicationController
   def all_users
     @users = User.all 
   end
+
   def new
     @user = User.new  
   end
 
-  def show
-  end
+  def show ; end
 
-  def home
-  end
-
-  def edit
-  end
+  def edit ; end
 
   def create
     @user = User.new(user_params) 

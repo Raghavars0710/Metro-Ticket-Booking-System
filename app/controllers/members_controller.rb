@@ -1,6 +1,6 @@
 class MembersController < ApplicationController
- 
-  before_action :current_member, only: [:show, :edit, :update, :destroy] # Add filter before action for perticuler actions
+  load_and_authorize_resource
+  before_action :current_member, only: [:show, :edit, :update, :destroy]
   before_action :current_user_members, only:[:index, :new, :create]  
 
   def index
@@ -29,8 +29,7 @@ class MembersController < ApplicationController
     @member = Member.find(show_member_id)
   end
 
-  def edit
-  end
+  def edit ; end
 
   def create
     @member = @user.members.new(member_params) 

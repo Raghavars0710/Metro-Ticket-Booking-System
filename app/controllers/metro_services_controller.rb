@@ -1,5 +1,6 @@
 class MetroServicesController < ApplicationController
- 
+  load_and_authorize_resource
+  
   def index
     @metro_s = MetroService.all
     @metro_s = MetroService.paginate(page: params[:page], per_page: 5)
@@ -10,12 +11,13 @@ class MetroServicesController < ApplicationController
   end
 
   def create
-      @metro_s = MetroService.new(metro_service_params)
-      if @metro_s.save
-        redirect_to root_path
-      else
-        render :new, notice: "Fill all field properly"
-      end
+    @metro_s = MetroService.new(metro_service_params)
+    if @metro_s.save
+      redirect_to root_path
+    else
+      flash.now[:notice] = "Fill all fields properly"  
+      render :new
+    end
   end
 
   def edit
@@ -43,12 +45,12 @@ class MetroServicesController < ApplicationController
     redirect_to request.referrer
   end
 
+
   private
   
   def metro_service_params
     params.require(:metro_service).permit(:source, :destination)
   end
-
 end
 
 

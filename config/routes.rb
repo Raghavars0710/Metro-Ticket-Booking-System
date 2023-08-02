@@ -8,8 +8,7 @@ Rails.application.routes.draw do
   get "tickets/all_tickets"
   get "tickets/user_ticket"
   get "users/all_users"
-  get "users/home"
- get '/members/show_member.:id', to: 'members#show_member', as: 'show_member'
+  get '/members/show_member.:id', to: 'members#show_member', as: 'show_member'
 
   resources :tickets
   
@@ -28,8 +27,7 @@ Rails.application.routes.draw do
   end
   
   resources :users do
-    resources :members
-    
+    resources :members  
   end
 
   root "metro_services#index"

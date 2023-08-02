@@ -5,19 +5,19 @@ class Ability
     user ||= User.new
 
     if user.role == "Admin"
+      can [:update, :destroy, :read], User, id: user.id
       can :read, Member
       can :manage, MetroService
       can :manage, Train
-      can :read, Ticket
-      can :read, User
+      can :manage, Ticket
     else
-      can :manage, Member
-      can :manage, User
-      can [:read, :create], Ticket
-      can :read, :metro_services
-      can :read, :trains
-      can :read, :tickets
-
+      can :manage, User, id: user.id
+      can :manage, Member, user_id: user.id
+      can :manage, Ticket, user_id: user.id
+      can :read, MetroService 
+      can :read, Train 
     end
+    
+    can [:update, :destroy], User, id: user.id 
   end
 end
