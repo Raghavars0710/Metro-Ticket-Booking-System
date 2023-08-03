@@ -2,8 +2,14 @@ class MetroServicesController < ApplicationController
   load_and_authorize_resource
   
   def index
-    @metro_s = MetroService.all
-    @metro_s = MetroService.paginate(page: params[:page], per_page: 5)
+    @metro_services = MetroService.all
+    if params[:source].present?
+      @metro_services = @metro_services.where(source: params[:source])
+    end
+    if params[:destination].present?
+      @metro_services = @metro_services.where(destination: params[:destination])
+    end
+    @metro_services = @metro_services.paginate(page: params[:page], per_page: 5)
   end
 
   def new
@@ -43,6 +49,14 @@ class MetroServicesController < ApplicationController
     @metro_s.destroy
     flash[:alert] = "Route deleted"
     redirect_to request.referrer
+  end
+
+  def search
+    if params[:source].present? || params[:destination].present?
+      redirect_to metro_services_path(source: params[:source], destination: params[:destination])
+    else
+      redirect_to metro_services_path
+    end
   end
 
 

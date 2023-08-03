@@ -1,5 +1,5 @@
 <style>
-  h1 {
+  h2 {
     text-align: center;
     margin-bottom: 20px;
     color: #007bff;
@@ -104,7 +104,8 @@
 
 </style>
 
-<h1>All Routes</h1>
+<h2>Welcome to Our Metro Booking Service</h2>
+<%= render partial: 'form_search' %>
 
 <table class="table table-striped">
   <thead>
@@ -115,7 +116,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @metro_s&.each do |metro| %>
+    <% @metro_services&.each do |metro| %>
     <tr>
       <td><%= metro.source %></td>
       <td><%= metro.destination %></td>
@@ -138,8 +139,8 @@
   </tbody>
 </table>
 <div class="digg_pagination">
-     <%= will_paginate @metro_s, :container => false %><br>
-    <div class="page_info">
-      <%= page_entries_info @metro_s %>
-    </div>
+  <%= will_paginate @metro_services, :container => false %><br>
+  <div class="page_info">
+    <%= page_entries_info @metro_services %>
+  </div>
 </div>
