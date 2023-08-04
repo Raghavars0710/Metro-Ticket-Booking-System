@@ -3,12 +3,12 @@ class User < ApplicationRecord
 
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable, :confirmable
      
-  has_many :members
-  has_many :tickets
+  has_many :members , dependent: :destroy
+  has_many :tickets , dependent: :destroy
 
   validates :name, presence: true, length: { minimum: 2 },uniqueness: true
-  validates :contact_number, length: { is: 10 }, uniqueness: true
-  validates :gender, inclusion: { in: ['male', 'female', 'other'], message: "must be male, female, or other" }
+  validates :contact_number, presence: true, uniqueness: true, length: { is: 10 }
+  validates :gender, presence: true, inclusion: { in: ['male', 'female', 'other'], message: "must be male, female, or other" }
 
   scope :passengers, -> { where(role: 'Passenger') }
 

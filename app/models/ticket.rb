@@ -4,7 +4,6 @@ class Ticket < ApplicationRecord
 
   before_validation :set_default_book_time, on: :create
 
-  validates :book_time, presence: true
   validates :book_date, presence: true
   validates :price, presence: true, numericality: { greater_than_or_equal_to: 0 }
   validates :train_id, presence: true

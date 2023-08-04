@@ -49,4 +49,17 @@ RSpec.describe Train, type: :model do
       expect(train.errors[:train_number]).to include("has already been taken")
     end
   end
+
+  describe "associations" do
+    it "belongs to a metro_service" do
+      association = described_class.reflect_on_association(:metro_service)
+      expect(association.macro).to eq(:belongs_to)
+    end
+
+    it "has many tickets" do
+      association = described_class.reflect_on_association(:tickets)
+      expect(association.macro).to eq(:has_many)
+      expect(association.options[:dependent]).to eq(:destroy)
+    end
+  end
 end
