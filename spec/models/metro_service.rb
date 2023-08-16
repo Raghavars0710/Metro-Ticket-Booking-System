@@ -19,7 +19,7 @@ RSpec.describe MetroService, type: :model do
       expect(metro_service.errors[:destination]).to include("can't be blank")
     end
   end
-
+  
   describe "associations" do
     it "has many trains" do
       association = described_class.reflect_on_association(:trains)
@@ -27,4 +27,5 @@ RSpec.describe MetroService, type: :model do
       expect(association.options[:dependent]).to eq(:destroy)
     end
   end
+
 end
