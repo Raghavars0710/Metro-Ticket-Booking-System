@@ -36,14 +36,17 @@ can create member and manager there profiles and also user can book ticket for p
 
 can remove there member and also they can delete there account From the Metro App .
 
-  Gem Used :-
+Gem Used :-
+
 Mailcatcher - to see all the mails.
 Devise - to handel authentication.
 will_paginate - to divide the content in multiple pages.
 byebug - to resolve bugs.
 cancancan - for authorization.
 sassc - to use of the original Ruby Sass library.
+
 Before running project do this necessary commends.
+
 bundle install - to install all the gems.
 rails db:migrate - to make the schema.
 rails db:seed to create admin devise user.
