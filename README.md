@@ -1,24 +1,59 @@
-# README
+The project Title is "Metro Ticket Booking System"
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+	Technologies used :- 
+Programming Languages: ruby ( version - 3.0.0 )
 
-Things you may want to cover:
+framework: ruby on rails
 
-* Ruby version
+Frontend: HTML, CSS
 
-* System dependencies
+Backend: ruby on rails ( version - 7.0.6 )
 
-* Configuration
+Database: SQLite3 ( version - 1.4 )
 
-* Database creation
+  Description :- 
+Hello guys, this is a public social site for a Booking .
 
-* Database initialization
+Where a user wlll have 2 roles ( "Admin", "Passenger").
 
-* How to run the test suite
+If a user is customer then its role will be Passenger or Admin.
 
-* Services (job queues, cache servers, search engines, etc.)
+If anyone do sign up then his account will be confirmed by admin.
 
-* Deployment instructions
+Passenger can create his/her profile.
 
-* ...
+Passenger can Add or remove there member its role Passenger only.
+
+Passenger can book ticket  for itself and also there member.
+
+If User is Admin then all the fuctionality will same as Passenger but he can also create route and trains also they can manage train and route for Passenger.
+
+If User is Passenger then he/she can:-
+
+Create a profile
+
+can create member and manager there profiles and also user can book ticket for perticuler there member .
+
+can remove there member and also they can delete there account From the Metro App .
+
+  Gem Used:-
+  
+Mailcatcher - to see all the mails.
+
+Devise - to handel authentication.
+
+will_paginate - to divide the content in multiple pages.
+
+byebug - to resolve bugs.
+
+cancancan - for authorization.
+
+sassc - to use of the original Ruby Sass library.
+
+Before running project do this necessary commends:-
+
+bundle install - to install all the gems.
+
+rails db:migrate - to make the schema.
+
+rails db:seed to create admin devise user.
