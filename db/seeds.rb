@@ -1,7 +1,5 @@
-# User.create(name: "Admin", contact_number: 986514723, address: "admin address", role: "Admin", date_of_birth: 11/07/1998, gender: "male")
-# User.create(name: "Raghav Sharma", contact_number: 8965068902, address: "", role: "Passenger", date_of_birth: 10/07/2000, gender: "male")
-
-
+# User.create!(email: "admin@gmail.com",password:"123456", encrypted_password: "encrypted_password_value", name: "Admin", contact_number: 1234567890, address: "123 Main Street, City, Country", role: "Admin", date_of_birth: "1990-01-01", gender: "male", confirmed_at: Time.now)
+# User.create!(email: "raghav@gmail.com",password:"123456", encrypted_password: "encrypted_password_value", name: "Raghav", contact_number: 8965068574, address: "123 Main Street, City, Country", role: "Passenger", date_of_birth: "2000-07-06", gender: "male", confirmed_at: Time.now)
 
 
 
