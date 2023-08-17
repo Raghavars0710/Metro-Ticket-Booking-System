@@ -3,7 +3,6 @@ class Ability
 
   def initialize(user)
     user ||= User.new
-
     if user.role == "Admin"
       can [:update, :destroy, :read], User, id: user.id
       can :read, Member
@@ -14,12 +13,11 @@ class Ability
       can :manage, User, id: user.id
       can :manage, Member, user_id: user.id
       can :manage, Ticket, user_id: user.id
-      can :manage, MetroService 
-      can :read, Train 
+      can :manage, MetroService
+      can :read, Train
     else
       can :read, MetroService
       can :read, Train
     end
   end
 end
-

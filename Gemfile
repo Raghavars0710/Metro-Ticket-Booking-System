@@ -52,7 +52,7 @@ gem 'mailtrap'
 gem 'cancancan'
 gem "cssbundling-rails", "~> 1.2"
 gem 'will_paginate', '~> 4.0'
-
+gem "rails_best_practices"
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
