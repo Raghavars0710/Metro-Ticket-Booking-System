@@ -1,6 +1,6 @@
 class MetroServicesController < ApplicationController
   load_and_authorize_resource
-  
+
   def index
     @metro_services = MetroService.all
     if params[:source].present?
@@ -21,7 +21,7 @@ class MetroServicesController < ApplicationController
     if @metro_s.save
       redirect_to root_path
     else
-      flash.now[:notice] = "Fill all fields properly"  
+      flash.now[:notice] = "Fill all fields properly"
       render :new
     end
   end
@@ -61,11 +61,8 @@ class MetroServicesController < ApplicationController
 
 
   private
-  
+
   def metro_service_params
     params.require(:metro_service).permit(:source, :destination)
   end
 end
-
-
-

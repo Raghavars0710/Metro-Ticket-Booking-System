@@ -2,7 +2,7 @@ class User < ApplicationRecord
   before_save :downcase_gender
 
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable, :confirmable
-     
+
   has_many :members , dependent: :destroy
   has_many :tickets , dependent: :destroy
 
@@ -10,7 +10,6 @@ class User < ApplicationRecord
   validates :contact_number, presence: true, uniqueness: true, length: { is: 10 }
   validates :gender, presence: true, inclusion: { in: ['male', 'female', 'other'], message: "must be male, female, or other" }
 
-  scope :passengers, -> { where(role: 'Passenger') }
 
   private
 

@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get '/members/show_member.:id', to: 'members#show_member', as: 'show_member'
   get '/metro_services/search', to: 'metro_services#search', as: 'metro_services_search'
   resources :tickets
-  
+
   resources :metro_services
 
   resources :trains do
@@ -25,11 +25,11 @@ Rails.application.routes.draw do
   resources :metro_services do
     resources :trains
   end
-  
+
   resources :users do
-    resources :members  
+    resources :members
   end
 
   root "metro_services#index"
-  
+
 end

@@ -1,20 +1,20 @@
 class MembersController < ApplicationController
   load_and_authorize_resource
   before_action :current_member, only: [:show, :edit, :update, :destroy]
-  before_action :current_user_members, only:[:index, :new, :create]  
+  before_action :current_user_members, only:[:index, :new, :create]
 
   def index
     if @user
       @members = @user.members.all
-    else 
+    else
       redirect_to root_path, notice: "Members of User Not Found "
     end
   end
 
   def new
-    if @user 
+    if @user
       @member = @user.members.new
-    else 
+    else
       redirect_to root_path, notice: "Members of User Not Found "
     end
   end
@@ -32,7 +32,7 @@ class MembersController < ApplicationController
   def edit ; end
 
   def create
-    @member = @user.members.new(member_params) 
+    @member = @user.members.new(member_params)
     if @member.save!
       redirect_to user_members_path(current_user.id), notice: "Member was successfuly created."
     else
@@ -65,7 +65,7 @@ class MembersController < ApplicationController
     @user = User.find(params[:user_id])
     @member = @user.members.find_by(id: params[:id])
   end
-  
+
   def member_params
     params.require(:member).permit(:user_id, :name, :email, :contact_number, :address, :date_of_birth, :role, :gender)
   end

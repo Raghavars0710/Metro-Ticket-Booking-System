@@ -10,7 +10,7 @@ class Train < ApplicationRecord
   self.per_page = 5
 
   private
-  
+
   def normalize_name    # Normalize train name by capitalizing the first letter
     self.name = name.capitalize if name.present?
   end
