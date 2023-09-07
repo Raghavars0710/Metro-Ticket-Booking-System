@@ -8,10 +8,6 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
-  def all_users
-    @users = User.all
-  end
-
   def new
     @user = User.new
   end
