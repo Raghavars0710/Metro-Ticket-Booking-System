@@ -50,6 +50,10 @@ class TrainsController < ApplicationController
 
   private
 
+  def current_train
+    @train = Train.find(params[:id])
+  end
+
   def train_params
     params.require(:train).permit(:name, :train_number, :source, :destination, :metro_service_id)
   end
