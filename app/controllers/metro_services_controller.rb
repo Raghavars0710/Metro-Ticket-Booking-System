@@ -1,5 +1,6 @@
 class MetroServicesController < ApplicationController
   load_and_authorize_resource
+  before_action :current_metro_service, only: [:edit, :update ,:show, :destroy]
 
   def index
     @metro_services = MetroService.all
@@ -26,12 +27,9 @@ class MetroServicesController < ApplicationController
     end
   end
 
-  def edit
-    @metro_s = MetroService.find(params[:id])
-  end
+  def edit ; end
 
   def update
-    @metro_s = MetroService.find(params[:id])
     if @metro_s.update(metro_service_params)
       flash[:alert] = "Route updated"
       redirect_to root_path
@@ -40,12 +38,9 @@ class MetroServicesController < ApplicationController
     end
   end
 
-  def show
-    @metro_s = MetroService.find(params[:id])
-  end
+  def show ; end
 
   def destroy
-    @metro_s = MetroService.find(params[:id])
     @metro_s.destroy
     flash[:alert] = "Route deleted"
     redirect_to request.referrer
@@ -58,7 +53,6 @@ class MetroServicesController < ApplicationController
       redirect_to metro_services_path
     end
   end
-
 
   private
 

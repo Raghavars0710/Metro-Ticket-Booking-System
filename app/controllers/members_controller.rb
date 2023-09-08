@@ -7,7 +7,7 @@ class MembersController < ApplicationController
     if @user
       @members = @user.members.all
     else
-      redirect_to root_path, notice: "Members of User Not Found "
+      redirect_to root_path, notice: "Members of User Not Found"
     end
   end
 
@@ -15,7 +15,7 @@ class MembersController < ApplicationController
     if @user
       @member = @user.members.new
     else
-      redirect_to root_path, notice: "Members of User Not Found "
+      redirect_to root_path, notice: "Members of User Not Found"
     end
   end
 
@@ -29,12 +29,12 @@ class MembersController < ApplicationController
     @member = Member.find(show_member_id)
   end
 
-  def edit ; end
+  def edit; end
 
   def create
     @member = @user.members.new(member_params)
     if @member.save!
-      redirect_to user_members_path(current_user.id), notice: "Member was successfuly created."
+      redirect_to user_members_path(current_user.id), notice: "Member was successfully created."
     else
       render :new, notice: "Fill all field properly"
     end
@@ -45,7 +45,7 @@ class MembersController < ApplicationController
       redirect_to user_members_path(current_user.id), notice: "Member was successfully Updated."
     else
       render :edit
-   end
+    end
   end
 
   def destroy
@@ -53,7 +53,6 @@ class MembersController < ApplicationController
     @member.destroy
     redirect_to user_members_path(current_user.id), notice: "Member was successfully deleted."
   end
-
 
   private
 

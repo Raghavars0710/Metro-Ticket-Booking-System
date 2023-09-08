@@ -3,7 +3,6 @@ class Ability
 
   def initialize(user)
     user ||= User.new
-
     if user.role == "Admin"
       can [:update, :destroy, :read], User, id: user.id
       can :read, Member

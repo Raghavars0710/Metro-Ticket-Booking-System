@@ -1,5 +1,6 @@
 class TrainsController < ApplicationController
   load_and_authorize_resource
+  before_action :current_train, only: [:update, :destroy, :edit]
 
   def index
     @metro_service = MetroService.find_by(id: params[:metro_service_id])
@@ -21,13 +22,10 @@ class TrainsController < ApplicationController
     @trains = Train.paginate(page: params[:page], per_page: 6)
   end
 
-  def edit
-    @train = Train.find(params[:id])
-  end
+  def edit ; end
 
   def create
     @train = Train.new(train_params)
-
     if @train.save!
       redirect_to root_path, notice: "Train was successfuly created."
     else
@@ -46,11 +44,9 @@ class TrainsController < ApplicationController
   end
 
   def destroy
-    @train = Train.find(params[:id])
     @train.destroy
     redirect_to  request.referrer, notice: "Train was successfully deleted."
   end
-
 
   private
 
