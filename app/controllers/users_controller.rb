@@ -27,7 +27,8 @@ class UsersController < ApplicationController
   end
 
   def update
-    if @user.update(user_params
+byebug
+    if @user.update(user_params)
       redirect_to user_path, notice: "user was successfully Updated."
     else
       render :edit

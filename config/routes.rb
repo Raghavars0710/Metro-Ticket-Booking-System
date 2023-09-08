@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   resources :trains do
     resources :tickets
   end
-  resources :users, only: [:show, :index , :new, :create, :edit, :update] do
+  resources :users do
     resources :metro_services
     resources :members
   end
