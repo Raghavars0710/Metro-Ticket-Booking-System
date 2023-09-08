@@ -8,6 +8,10 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+  def all_users
+    @users = User.all
+  end
+
   def new
     @user = User.new
   end
@@ -20,15 +24,15 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save!
       UserMailer.user_email(@user).deliver_now
-      redirect_to user_path(@user), notice: "User was successfully created."
+      redirect_to user_path(@user), notice: "User was successfuly created."
     else
-      render :new, notice: "Fill all fields properly"
+      render :new, notice: "Fill all field properly"
     end
   end
 
   def update
-    if @user.update(user_params)
-      redirect_to user_path, notice: "User was successfully updated."
+    if @user.update(user_params
+      redirect_to user_path, notice: "user was successfully Updated."
     else
       render :edit
     end

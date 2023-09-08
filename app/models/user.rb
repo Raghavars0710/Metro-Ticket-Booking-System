@@ -10,6 +10,7 @@ class User < ApplicationRecord
   validates :contact_number, presence: true, uniqueness: true, length: { is: 10 }
   validates :gender, presence: true, inclusion: { in: ['male', 'female', 'other'], message: "must be male, female, or other" }
 
+
   private
 
   def downcase_gender

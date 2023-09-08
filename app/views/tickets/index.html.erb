@@ -23,7 +23,7 @@
                 <th>Book Date</th>
                 <th>Price</th>
                 <th colspan="1">See Ticket</th>
-            </tr> 
+            </tr>
           </thead>
           <tbody>
             <% @train.tickets.each do |ticket| %>
@@ -34,7 +34,7 @@
                   <td><%= @train.name %></td>
                   <td><%= ticket.book_date %></td>
                   <td><%= ticket.price %></td>
-                  <td><%= link_to 'Details', train_ticket_path(@train,ticket), class: "btn btn-info" %>                    
+                  <td><%= link_to 'Details', train_ticket_path(@train,ticket), class: "btn btn-info" %>
                   </td>
                   <% @total_price += ticket.price %>
               </tr>

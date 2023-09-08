@@ -56,10 +56,6 @@ class MetroServicesController < ApplicationController
 
   private
 
-  def current_metro_service
-    @metro_s = MetroService.find(params[:id])
-  end
-
   def metro_service_params
     params.require(:metro_service).permit(:source, :destination)
   end

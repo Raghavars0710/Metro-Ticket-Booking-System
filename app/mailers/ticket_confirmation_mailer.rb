@@ -4,7 +4,7 @@ class TicketConfirmationMailer < ApplicationMailer
   def ticket_confirmation_email(user,train, ticket)
     @train = train
     @ticket = ticket
-    
+
     mail(
       to: user,
       subject: 'Welcome to Metro App!',

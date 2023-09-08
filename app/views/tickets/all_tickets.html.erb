@@ -17,16 +17,16 @@
                 <th>Price</th>
                 <th>Train Id</th>
                 <th colspan="1">Click Any Operations</th>
-            </tr> 
+            </tr>
           </thead>
-          <tbody>            
+          <tbody>
             <% @tickets.each do |ticket| %>
               <tr>
                 <td><%= ticket.book_date %></td>
                 <td><%= ticket.price %></td>
                 <td><%= ticket.train_id %></td>
                 <td>
-                  <%= link_to 'Ticket Details', train_ticket_path(ticket.train_id,ticket), class: "btn btn-info" %> 
+                  <%= link_to 'Ticket Details', train_ticket_path(ticket.train_id,ticket), class: "btn btn-info" %>
                 </td>
                 <% @total_price += ticket.price %>
               </tr>
@@ -43,4 +43,3 @@
     <% end %>
   </div>
 </div>
-

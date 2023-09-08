@@ -1,7 +1,7 @@
 class MembersController < ApplicationController
   load_and_authorize_resource
   before_action :current_member, only: [:show, :edit, :update, :destroy]
-  before_action :current_user_members, only: [:index, :new, :create]
+  before_action :current_user_members, only:[:index, :new, :create]
 
   def index
     if @user

@@ -27,7 +27,7 @@ class TrainsController < ApplicationController
   def create
     @train = Train.new(train_params)
     if @train.save!
-      redirect_to root_path, notice: "Train was successfully created."
+      redirect_to root_path, notice: "Train was successfuly created."
     else
       flash[:notice] = "Fill all fields properly"
       render :new
@@ -35,8 +35,9 @@ class TrainsController < ApplicationController
   end
 
   def update
+    @train = Train.find(params[:id])
     if @train.update!(train_params)
-      redirect_to trains_all_trains_path, notice: "Train was successfully updated."
+      redirect_to trains_all_trains_path, notice: "Train was successfully Updated."
     else
       render :edit
     end
@@ -48,10 +49,6 @@ class TrainsController < ApplicationController
   end
 
   private
-
-  def current_train
-    @train = Train.find(params[:id])
-  end
 
   def train_params
     params.require(:train).permit(:name, :train_number, :source, :destination, :metro_service_id)

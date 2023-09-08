@@ -27,9 +27,9 @@
   }
 
   .btn {
-    padding: 6px 12px; 
+    padding: 6px 12px;
     border-radius: 4px;
-    font-size: 12px; 
+    font-size: 12px;
     cursor: pointer;
   }
 
@@ -44,8 +44,8 @@
   }
 
   .digg_pagination {
-    text-align: center; 
-    margin-top: 20px; 
+    text-align: center;
+    margin-top: 20px;
   }
 
   .digg_pagination a,.digg_pagination span,.digg_pagination em {
@@ -55,7 +55,7 @@
 
   .digg_pagination .disabled {
     color: #999999;
-    border: 1px solid #dddddd; 
+    border: 1px solid #dddddd;
   }
 
   .digg_pagination .current {
@@ -63,18 +63,18 @@
     font-weight: bold;
     background: #2e6ab1;
     color: white;
-    border: 1px solid #2e6ab1; 
+    border: 1px solid #2e6ab1;
   }
 
   .digg_pagination a {
     text-decoration: none;
     color: #105cb6;
-    border: 1px solid #9aafe5; 
+    border: 1px solid #9aafe5;
   }
 
   .digg_pagination a:hover, .digg_pagination a:focus {
     color: #000033;
-    border-color: #000033; 
+    border-color: #000033;
   }
 
   .digg_pagination .page_info {
@@ -83,8 +83,8 @@
     padding: 0.4em 0.6em;
     width: 22em;
     margin-bottom: 0.3em;
-    text-align: center; 
-    margin: 0 auto; 
+    text-align: center;
+    margin: 0 auto;
     display: inline-block;
   }
 
@@ -99,13 +99,13 @@
     display: none;
     height: 0;
     clear: both;
-    visibility: hidden; 
+    visibility: hidden;
   }
 
 </style>
 
 <h2>Welcome to Our Metro Booking Service</h2>
-<%= render partial: 'form_search' %>
+<%= render 'form_search' %>
 
 <table class="table table-striped">
   <thead>
@@ -120,7 +120,6 @@
     <tr>
       <td><%= metro.source %></td>
       <td><%= metro.destination %></td>
-      
       <% if current_user&.role == "Admin" %>
       <td>
         <div class="btn-group" role="group">
@@ -132,7 +131,7 @@
       <% else %>
       <td>
         <%= link_to 'View Trains', metro_service_trains_path(metro.id), class: "btn btn-primary" %>
-      </td> 
+      </td>
       <% end %>
     </tr>
     <% end %>
