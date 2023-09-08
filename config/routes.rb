@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
+
   devise_for :users, controllers: { registrations: 'registrations' } do
     get 'devise/sessions#destroy'
   end
-
+  root "metro_services#index"
   get "trains/all_trains"
   get "tickets/all_tickets"
   get "tickets/user_ticket"
@@ -13,14 +14,11 @@ Rails.application.routes.draw do
   resources :trains do
     resources :tickets
   end
-  resources :users do
+  resources :users, only: [:show, :index , :new, :create, :edit, :update] do
     resources :metro_services
+    resources :members
   end
   resources :metro_services do
     resources :trains
   end
-  resources :users do
-    resources :members
-  end
-  root "metro_services#index"
 end
